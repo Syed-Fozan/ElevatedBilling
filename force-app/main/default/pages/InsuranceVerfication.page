@@ -27,14 +27,14 @@
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Insurance Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Name}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Subscriber ID#</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Name}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Subscriber ID#</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Subscriber_ID__c}"/></span></td>
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Ins. Address</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.InsAddress__c}"/></span></td>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Plan/Group#</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Ins.Phone</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Phone}"/></span><span>Payor ID:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Payor_ID__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Ins.Phone</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Phone}"/></span>&nbsp;<span style="font-weight: bold;">Payor ID:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Payor_ID__c}"/></span></td>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Employer(Group) Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
 </tr>
 <tr>
@@ -42,20 +42,20 @@
     <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type(Calendar/Plan)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Standard COB:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span><span>Other Method COB:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Individual Deductible:$</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span><span>Met To Date:$&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Standard COB:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/>&nbsp;</span><span style="font-weight: bold;">Other Method COB:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Individual Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">In Network:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span><span style="font-weight: bold;">,Fee Schedule&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Family Deductible:$</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span><span>Met To Date:$&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">In Network:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span>&nbsp;<span style="font-weight: bold;">Fee Schedule&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Family Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Is Plan a Cal.Year or Benefit Year:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Deductible applies to:$</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Deductible applies to:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Are there Out of Network Benefits?(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c }"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Dental Maximum:$</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span><span>Remaining $&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Dental Maximum:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span>&nbsp;<span style="font-weight: bold;">Remaining &nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type (Ex. DHMO,PPO,EPO,HMO)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Plan_Type__c}"/></span></td>
@@ -66,10 +66,9 @@
     <td style="padding-left:5px;"><span style="font-weight: bold;">Payment issued to Subscriber or Office?:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
 </tr>
 </table>
-<table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:160px; background-color:#808080; color:#fff;">
+<table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:50px; background-color:#808080; color:#fff;">
 <tr>
-    <td style="padding-left:5px;">Date: &nbsp; <apex:outputField value="{!Account.Due_Date__c}"/><span>Time: &nbsp; <apex:outputField value="{!Account.BillingStreet}"/></span></td>
-</tr>
+    <td style="padding-left:5px;">Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!Account.Due_Date__c}" /></apex:outputText>&nbsp; Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText></td></tr>
 <tr>
     <td style="padding-left:5px;">Rep Name: &nbsp; <apex:outputField value="{!Account.Name}"/></td>
 </tr>
@@ -88,11 +87,11 @@
 </table>
 <table style="font-family:sans-serif; font-size: 12px;">
 <tr style="color:#4040FF;">
-    <th style="padding-left:5px; padding-right:150px;">Class I: Preventive &nbsp; %</th>
-    <th style="padding-left:5px; padding-right:150px;">Class II: Basic:&nbsp; %</th>    
+    <th style="padding-left:5px; padding-right:150px;">Class I: Preventive &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></Span></th>
+    <th style="padding-left:5px; padding-right:150px;">Class II: Basic &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></Span></th>    
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Oral Exam: </span>&nbsp; Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Routine_Oral_Exam__c }"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Oral Exam: </span>&nbsp;Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Routine_Oral_Exam__c }"/></span></td>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Composite Fillings</span> D2391:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Primary_Sales_Contact__c}"/></span>%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
 </tr>
 <tr>
@@ -100,7 +99,7 @@
     <td style="padding-left:5px;"><span style="font-weight: bold;">Alternate benefit</span>? (Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">D0140 shared w/ oral exam?</span>(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Name}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">D0140 shared w/ oral exam?</span>(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
     <th style="color:#4040FF;padding-left:5px; padding-right:10px;">Allowable under Basic or Major:</th>    
 </tr>
 <tr>
@@ -125,7 +124,7 @@
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Bitewings:</span> D0272:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c }"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <th style="padding-left:5px; padding-right:150px; color:#4040FF;">Ortho:&nbsp; &nbsp;%</th>    
+    <th style="padding-left:5px; padding-right:150px; color:#4040FF;">Ortho&nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></Span></th>    
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;"></span> D0274:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c   }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
@@ -156,7 +155,7 @@
     <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last Exam: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
 </tr>
 <tr>
-    <th style="padding-left:5px; padding-right:150px;">Class I: Preventive &nbsp;</th>
+    <th style="color:#4040FF; padding-left:5px; padding-right:150px;">Class III: Major &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></Span></th>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last BWX: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
 </tr>
 <tr>
@@ -177,6 +176,9 @@
 </tr>
 </table>
 <hr style="height:4px; Padding-left:80px; width:50%; color:black;"/>
+<br/>
 
+<footer style="width: 100%; background-color: white; position: fixed; clear: both;font-size: 8px;" ><span style="font-weight: bold;">Disclaimer: </span>  This is a summary of plan benefits and is not intended to be a contract. Actual coverage will be determined when the claim is processed subject to all contract terms, including, but not limited to, member benefits, benefit maximums and subscription charge payment covering the actual dates of service. This is not a dental pre-determination of benefits or a guarantee of payment.
+</footer>  
 
 </apex:page>
