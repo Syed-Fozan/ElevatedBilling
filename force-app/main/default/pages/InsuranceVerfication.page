@@ -66,14 +66,14 @@
     <td style="padding-left:5px;"><span style="font-weight: bold;">Payment issued to Subscriber or Office?:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
 </tr>
 </table>
-<table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:50px; background-color:#808080; color:#fff;">
+<table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:30px; background-color:#988a8a; color:#fff;">
 <tr>
     <td style="padding-left:5px;">Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!Account.Due_Date__c}" /></apex:outputText>&nbsp; Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText></td></tr>
 <tr>
     <td style="padding-left:5px;">Rep Name: &nbsp; <apex:outputField value="{!Account.Name}"/></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;">Ref#: &nbsp; <apex:outputField value="{!Account.AccountNumber}"/><span>EBS: &nbsp; <apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;">Ref#: &nbsp; <apex:outputField value="{!Account.AccountNumber}"/>&nbsp;<span>EBS: &nbsp; <apex:outputField value="{!Account.BillingStreet}"/></span></td>
 </tr>
 
 </table>
@@ -175,7 +175,7 @@
     <th style="padding-left:5px; padding-right:10px;">Sealant History:</th>    
 </tr>
 </table>
-<hr style="height:4px; Padding-left:80px; width:50%; color:black;"/>
+<hr style=" margin-right:40px; width:57%; color:black;"/>
 <br/>
 
 <footer style="width: 100%; background-color: white; position: fixed; clear: both;font-size: 8px;" ><span style="font-weight: bold;">Disclaimer: </span>  This is a summary of plan benefits and is not intended to be a contract. Actual coverage will be determined when the claim is processed subject to all contract terms, including, but not limited to, member benefits, benefit maximums and subscription charge payment covering the actual dates of service. This is not a dental pre-determination of benefits or a guarantee of payment.
