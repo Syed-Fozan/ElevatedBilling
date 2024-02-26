@@ -40,8 +40,8 @@ public class InsuranceVerificationController {
                         Subscriber_Date_Of_Birth__c, 
                         Subscriber_ID__c, 
                         Subscriber_Name__c, 
-                        Subscriber_Plan_Type__c, 
-                        Waiting_Period__c 
+                        Subscriber_Plan_Type__c,Bitewings_D0272__c,Bitewings_D0272_Freq__c,Bitewings_D0272_To_Age__c,
+                        Waiting_Period__c ,D0240__c,D0240_Freq__c,D0240_to_Age__c
                FROM InsuranceVerfication__c 
                LIMIT 1];
     }

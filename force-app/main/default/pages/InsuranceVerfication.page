@@ -78,7 +78,7 @@
 
 </table> -->
 <!-- <br/> -->
-<!-- <table style="font-family:sans-serif;">
+<table style="font-family:sans-serif;">
 <tr>
 <td></td>
 <td style="text-align:center; font-size: 16px; font-weight: bold;padding-left:250px;">DENTAL BENEFITS</td>
@@ -91,39 +91,39 @@
     <th style="padding-left:5px; padding-right:150px;">Class II: Basic &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></Span></th>    
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Oral Exam: </span>&nbsp;Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Oral_Exam__c }"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Composite Fillings</span> D2391:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span>%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Oral Exam: </span>&nbsp;Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Oral_Exam_Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Composite Fillings</span> D2391:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Composite_Fillings_D2391__c}"/></span>%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Comp Exam</span>&nbsp;D0150: Freq.&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Alternate benefit</span>? (Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">D0140 shared w/ oral exam?</span>(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Standard_COB__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">D0140 shared w/ oral exam?</span>(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.D0140_shared_w_oral_exam__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.D0140_shared_w_oral_exam_Freq__c}"/></span></td>
     <th style="color:#4040FF;padding-left:5px; padding-right:10px;">Allowable under Basic or Major:</th>    
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Can be done same day as TX? (Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Standard_COB__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Can be done same day as TX? (Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Can_be_done_same_day_as_TX__c}"/></span></td>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Pulpotomy</span>  D3220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span>&nbsp;% To Age:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Child Prophylaxis:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c    }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Child Prophylaxis:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Child_Prophylaxis__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Child_Prophylaxis_Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Child_Prophylaxis_Freq_To_Age__c}"/></span></td>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Simple Ext </span> D7140 &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span>&nbsp;% To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Adult Prophy:</span> Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c    }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Adult Prophy:</span> Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Adult_Prophy__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Adult_Prophy_Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Adult_Prophy_Freq_To_Age__c}"/></span></td>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Frenectomy</span> D7961/D7962:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">PA's</span> D0220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">PA's</span> D0220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.PA_s_D0220__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.PA_s_D0220_Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.PA_s_D0220_Freq_To_Age__c}"/></span></td>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Pallative </span> D9110:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;"></span> D0220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;"></span> D0220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.D0240__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.D0240_Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.D0240_to_Age__c}"/></span></td>
     <td style="padding-left:5px;"> D9630:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Bitewings:</span> D0272:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c }"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Bitewings:</span> D0272:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Bitewings_D0272__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Bitewings_D0272_Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Bitewings_D0272_To_Age__c}"/></span></td>
     <th style="padding-left:5px; padding-right:150px; color:#4040FF;">Ortho&nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></Span></th>    
 </tr>
 <tr>
@@ -176,7 +176,7 @@
 </tr>
 </table>
 <hr style=" margin-right:40px; width:57%; color:black;"/>
-<br/> -->
+<br/>
 
 <footer style="width: 100%; background-color: white; position: fixed; clear: both;font-size: 8px;" ><span style="font-weight: bold;">Disclaimer: </span>  This is a summary of plan benefits and is not intended to be a contract. Actual coverage will be determined when the claim is processed subject to all contract terms, including, but not limited to, member benefits, benefit maximums and subscription charge payment covering the actual dates of service. This is not a dental pre-determination of benefits or a guarantee of payment.
 </footer>  
