@@ -1,4 +1,4 @@
-<apex:page standardController="Account" renderAs="pdf">
+<apex:page controller="InsuranceVerificationController" renderAs="pdf">
 
 <table style="font-family:sans-serif;font-weight: bold;">
 <tr>
@@ -18,67 +18,67 @@
     <th style="padding-left:5px; padding-right:150px;">Subscriber Information:&nbsp;</th>    
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Patient Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Name}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Subscriber Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Subscriber_Name__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Patient Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Patient_Name__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Subscriber Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Subscriber_Name__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of Birth</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Date_Of_Birth__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of Birth</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Date_Of_Birth__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of Birth</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Date_Of_Birth__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of Birth</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Subscriber_Date_Of_Birth__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Insurance Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Name}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Subscriber ID#</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Subscriber_ID__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Insurance Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Insurance_Name__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Subscriber ID#</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Subscriber_ID__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Ins. Address</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.InsAddress__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Plan/Group#</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Ins. Address</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Ins_Address__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Plan/Group#</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Plan_Group__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Ins.Phone</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Phone}"/></span>&nbsp;<span style="font-weight: bold;">Payor ID:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Payor_ID__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Employer(Group) Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Ins.Phone</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Ins_Phone__c}"/></span>&nbsp;<span style="font-weight: bold;">Payor ID:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Payor_ID__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Employer(Group) Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Employer_Group_Name__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Insurance Effective Date</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type(Calendar/Plan)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Insurance Effective Date</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Insurance_Effective_Date__c}"/></span></td>
+    <!-- <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type(Calendar/Plan)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Due_Date__c}"/></span></td> -->
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Standard COB:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/>&nbsp;</span><span style="font-weight: bold;">Other Method COB:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Individual Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Standard COB:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Standard_COB__c}"/>&nbsp;</span><span style="font-weight: bold;">Other Method COB:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Other_Method_COB__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Individual Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Individual_Deductible__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Individual_Deductible_Met_To__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">In Network:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span>&nbsp;<span style="font-weight: bold;">Fee Schedule&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Family Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">In Network:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.In_Network__c}"/></span>&nbsp;<span style="font-weight: bold;">Fee Schedule&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Fee_Schedule__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Family Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Family_Deductible__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Family_Deductible_Met_To_Date__c	}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Is Plan a Cal.Year or Benefit Year:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Deductible applies to:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Is Plan a Cal.Year or Benefit Year:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Is_plan_a_Cal_Year_or_Benefit_Year__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Deductible applies to:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Deductible_applies_to__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Are there Out of Network Benefits?(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c }"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Dental Maximum:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span>&nbsp;<span style="font-weight: bold;">Remaining &nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Amount__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Are there Out of Network Benefits?(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Are_there_Out_of_Network_Benefits__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Dental Maximum:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Dental_Maximum__c}"/></span>&nbsp;<span style="font-weight: bold;">Remaining &nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Dental_Maximum_Remaining__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type (Ex. DHMO,PPO,EPO,HMO)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Plan_Type__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Max Applies to Diag/Prev:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type (Ex. DHMO,PPO,EPO,HMO)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Plan_Type__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Max Applies to Diag/Prev:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Max_Applies_To_Diag_Prev__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Waiting Period? (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Payment issued to Subscriber or Office?:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Waiting Period? (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Payment issued to Subscriber or Office?:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Payment_issued_to_Subscriber_or_Office__c}"/></span></td>
 </tr>
 </table>
-<table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:30px; background-color:#988a8a; color:#fff;">
+<!-- <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:30px; background-color:#988a8a; color:#fff;">
 <tr>
-    <td style="padding-left:5px;">Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!Account.Due_Date__c}" /></apex:outputText>&nbsp; Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText></td></tr>
+    <td style="padding-left:5px;">Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!insuranceVerification.Due_Date__c}" /></apex:outputText>&nbsp; Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText></td></tr>
 <tr>
-    <td style="padding-left:5px;">Rep Name: &nbsp; <apex:outputField value="{!Account.Name}"/></td>
+    <td style="padding-left:5px;">Rep Name: &nbsp; <apex:outputField value="{!insuranceVerification.Name}"/></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;">Ref#: &nbsp; <apex:outputField value="{!Account.AccountNumber}"/>&nbsp;<span>EBS: &nbsp; <apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;">Ref#: &nbsp; <apex:outputField value="{!insuranceVerification.insuranceVerificationNumber}"/>&nbsp;<span>EBS: &nbsp; <apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
 </tr>
 
-</table>
-<br/>
-<table style="font-family:sans-serif;">
+</table> -->
+<!-- <br/> -->
+<!-- <table style="font-family:sans-serif;">
 <tr>
 <td></td>
 <td style="text-align:center; font-size: 16px; font-weight: bold;padding-left:250px;">DENTAL BENEFITS</td>
@@ -87,88 +87,88 @@
 </table>
 <table style="font-family:sans-serif; font-size: 12px;">
 <tr style="color:#4040FF;">
-    <th style="padding-left:5px; padding-right:150px;">Class I: Preventive &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></Span></th>
-    <th style="padding-left:5px; padding-right:150px;">Class II: Basic &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></Span></th>    
+    <th style="padding-left:5px; padding-right:150px;">Class I: Preventive &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></Span></th>
+    <th style="padding-left:5px; padding-right:150px;">Class II: Basic &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></Span></th>    
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Oral Exam: </span>&nbsp;Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Routine_Oral_Exam__c }"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Composite Fillings</span> D2391:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Primary_Sales_Contact__c}"/></span>%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Oral Exam: </span>&nbsp;Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Oral_Exam__c }"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Composite Fillings</span> D2391:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span>%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Comp Exam</span>&nbsp;D0150: Freq.&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Alternate benefit</span>? (Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Comp Exam</span>&nbsp;D0150: Freq.&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Alternate benefit</span>? (Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">D0140 shared w/ oral exam?</span>(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">D0140 shared w/ oral exam?</span>(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Standard_COB__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
     <th style="color:#4040FF;padding-left:5px; padding-right:10px;">Allowable under Basic or Major:</th>    
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Can be done same day as TX? (Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Pulpotomy</span>  D3220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span>&nbsp;% To Age:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Can be done same day as TX? (Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Standard_COB__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Pulpotomy</span>  D3220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span>&nbsp;% To Age:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Child Prophylaxis:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c    }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Simple Ext </span> D7140 &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span>&nbsp;% To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Child Prophylaxis:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c    }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Simple Ext </span> D7140 &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span>&nbsp;% To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Adult Prophy:</span> Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c    }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Frenectomy</span> D7961/D7962:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Adult Prophy:</span> Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c    }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Frenectomy</span> D7961/D7962:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">PA's</span> D0220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Pallative </span> D9110:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">PA's</span> D0220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Pallative </span> D9110:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;"></span> D0220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"> D9630:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;"></span> D0220:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"> D9630:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Bitewings:</span> D0272:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c }"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <th style="padding-left:5px; padding-right:150px; color:#4040FF;">Ortho&nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></Span></th>    
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Bitewings:</span> D0272:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c }"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <th style="padding-left:5px; padding-right:150px; color:#4040FF;">Ortho&nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></Span></th>    
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;"></span> D0274:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c   }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Auto Pay?:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Standard_COB__c}"/></span><span style="font-weight: bold;">,Claim Submit Freq:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;"></span> D0274:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c   }"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Auto Pay?:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Standard_COB__c}"/></span><span style="font-weight: bold;">,Claim Submit Freq:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Fluoride:</span> D1206&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></span>&nbsp;%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Payment Frequency :</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Fluoride:</span> D1206&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>&nbsp;%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Payment Frequency :</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Sealants:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Name}"/></span>&nbsp;%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Ortho Lifetime Max: </span>$ &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span><span style="font-weight: bold;"> Ortho Max Met: &nbsp;</span>$<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Sealants:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Name}"/></span>&nbsp;%Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Ortho Lifetime Max: </span>$ &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span><span style="font-weight: bold;"> Ortho Max Met: &nbsp;</span>$<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">SDF:</span>D1354&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c }"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Ortho Deductible: </span>$ &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span><span style="font-weight: bold;"> Ortho Ded Met: &nbsp;</span>$<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">SDF:</span>D1354&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c }"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Ortho Deductible: </span>$ &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span><span style="font-weight: bold;"> Ortho Ded Met: &nbsp;</span>$<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span>D1515:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Up To Age: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Primary_Sales_Contact__c}"/></span></td>
+    <td style="padding-left:5px;"><span>D1515:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Up To Age: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span>D1516:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></span>&nbsp;Freq <span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span> To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span>D1516:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>&nbsp;Freq <span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span> To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
     <th style="color:#4040FF;padding-left:5px; padding-right:10px;">Notes/History:</th>    
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span>D1517:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></span>&nbsp;To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Age__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last Exam: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
+    <td style="padding-left:5px;"><span>D1517:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>&nbsp;To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last Exam: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Due_Date__c}"/></span></td>
 </tr>
 <tr>
-    <th style="color:#4040FF; padding-left:5px; padding-right:150px;">Class III: Major &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></Span></th>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last BWX: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
+    <th style="color:#4040FF; padding-left:5px; padding-right:150px;">Class III: Major &nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></Span></th>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last BWX: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Due_Date__c}"/></span></td>
 </tr>
 <tr>
     <td style="padding-left:5px;"><span style="font-weight: bold;">Crowns:</span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last pano/FMX: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last pano/FMX: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Due_Date__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span>D29230:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last prophy: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Due_Date__c}"/></span></td>
+    <td style="padding-left:5px;"><span>D29230:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Date of last prophy: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Due_Date__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span>D2929:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Percentage__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!Account.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!Account.BillingStreet}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Last Flouride: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!Account.Primary_Sales_Contact__c}"/></span></td>
+    <td style="padding-left:5px;"><span>D2929:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Percentage__c}"/></span>&nbsp;Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.BillingStreet}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Last Flouride: </span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Primary_Sales_Contact__c}"/></span></td>
 </tr>
 <tr>
     <td></td>
@@ -176,7 +176,7 @@
 </tr>
 </table>
 <hr style=" margin-right:40px; width:57%; color:black;"/>
-<br/>
+<br/> -->
 
 <footer style="width: 100%; background-color: white; position: fixed; clear: both;font-size: 8px;" ><span style="font-weight: bold;">Disclaimer: </span>  This is a summary of plan benefits and is not intended to be a contract. Actual coverage will be determined when the claim is processed subject to all contract terms, including, but not limited to, member benefits, benefit maximums and subscription charge payment covering the actual dates of service. This is not a dental pre-determination of benefits or a guarantee of payment.
 </footer>  
