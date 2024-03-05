@@ -1,5 +1,5 @@
 ({
-    myAction : function(component, event, helper) {
-
+    generatePDFs: function(component, event, helper) {
+       helper.generatePDF(component,event,helper);
     }
 })

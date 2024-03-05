@@ -1,3 +1,5 @@
-<aura:component>
+<aura:component controller="pdfController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="recordId" type="String" />
     
+    <lightning:button label="Generate PDF" onclick="{!c.generatePDFs}" />
 </aura:component>
