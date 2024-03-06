@@ -17,9 +17,15 @@ public class pdfController {
                 String recordTypeName = insuranceVerificationRecord.RecordType.Name;
                 System.debug('Record Type Name: ' + recordTypeName);
                 if (recordTypeName == 'Dino Kids Dentistry Breakdown') {
-                    return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/InsuranceVerfication?id=' + recordId; // URL for Visualforce page for RecordType1
+                    return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/InsuranceVerfication?id=' + recordId; 
                 } else if (recordTypeName == 'Aesthetic & Implant Dentistry of Atlanta Breakdown') {
-                    return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/AestheticImplantDentistry?id=' + recordId; // URL for Visualforce page for RecordType2
+                    return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/AestheticImplantDentistry?id=' + recordId; 
+                } else if (recordTypeName == 'canatella breakdown') {
+                    return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/canatellabreakdown?id=' + recordId; 
+                } else if (recordTypeName == 'buckhead Dental Studio Breakdown Form') {
+                    return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/buckheadDentalStudioBreakdownForm?id=' + recordId;
+                } else if (recordTypeName == 'Alameda Breakdown') {
+                    return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/AlamedaBreakdown?id=' + recordId; 
                 }
 
             }
