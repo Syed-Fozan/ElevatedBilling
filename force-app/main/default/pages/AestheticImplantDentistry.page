@@ -50,12 +50,10 @@
     <td style="padding-left:5px;"><span style="font-weight: bold;">Date of Birth</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Date_Of_Birth__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type (Ex. DHMO,PPO,EPO,HMO)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Plan_Type__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Max Applies to Diag/Prev:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Max_Applies_To_Diag_Prev__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Payment sent to Office or Subscriber?</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Plan_Type__c}"/></span></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Waiting Period? (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span></td>
-    <td style="padding-left:5px;"><span style="font-weight: bold;">Payment issued to Subscriber or Office?:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Payment_issued_to_Subscriber_or_Office__c}"/></span></td>
+    <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type (Ex. DHMO,PPO,EPO,HMO):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span></td>
 </tr>
 
 </table>
