@@ -33,17 +33,17 @@ public class AestheticImplantDentistryController {
                                                           Individual_Deductible__c,Ortho_Ded_Met__c,PA_s_D0220_Freq__c, 
                                                           Individual_Deductible_Met_To__c,Pulpotomy_D3220_To_Age__c, 
                                                           Ins_Address__c,D1516__c,D1516_To_Age__c,PA_s_D0220_Freq_To_Age__c,
-                                                          Patient_Name__c,D1517__c,D1517_To_Age__c, 
-                                                          Payment_issued_to_Subscriber_or_Office__c, 
+                                                          Patient_Name__c,D1517__c,D1517_To_Age__c,Routine_Prophylaxis__c,Routine_Prophylaxis_Freq__c,Routine_Prophylaxis_To_Age__c,
+                                                          Payment_issued_to_Subscriber_or_Office__c,Are_posterior_composites_downgraded__c, 
                                                           Plan_Group__c,Ortho_Max_Met__c,Simple_Ext_To_Age__c, 
                                                           Plan_Type__c,Ortho_Lifetime_Max__c,Alternate_benefit__c, 
                                                           Routine_Oral_Exam_Freq__c,Ortho__c,Class_III_Major__c, 
                                                           Standard_COB__c,Payment_Frequency__c,Simple_Ext_D7140__c, 
                                                           Subscriber_Date_Of_Birth__c,Pallative_D9110__c, 
                                                           Subscriber_ID__c,Auto_Pay__c,Pallative_D9110_Freq__c, 
-                                                          Subscriber_Name__c,Claim_Submit_Freq__c,Frenectomy_D7961_D7962_Freq__c, 
+                                                          Subscriber_Name__c,Claim_Submit_Freq__c,Frenectomy_D7961_D7962_Freq__c,Fillings__c, 
                                                           Subscriber_Plan_Type__c,Bitewings_D0272__c,Bitewings_D0272_Freq__c,Bitewings_D0272_To_Age__c,
-                                                          Waiting_Period__c ,D0240__c,D0240_Freq__c,D0240_to_Age__c
+                                                          Waiting_Period__c ,D0240__c,D0240_Freq__c,D0240_to_Age__c,Group_Name__c,Group__c,Eff_Date__c
                                                      FROM InsuranceVerfication__c 
                                                      WHERE Id = :recordId
                                                      LIMIT 1];

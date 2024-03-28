@@ -53,7 +53,7 @@
             <td style="padding-left:5px;"><span style="font-weight: bold;">Payment sent to Office or Subscriber?</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Plan_Type__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type (Ex. DHMO,PPO,EPO,HMO):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type (Ex. DHMO,PPO,EPO,HMO):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Plan_Type__c}"/></span></td>
         </tr>
         
     </table>
@@ -122,14 +122,14 @@
         </tr>
         <tr>
             <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Oral Exam: </span>&nbsp;Freq&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Oral_Exam_Freq__c}"/></span></td>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Fillings</span> Freq:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Composite_Fillings_D2391__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Fillings</span> Freq:&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Fillings__c}"/></span></td>
         </tr>
         <tr>
             <td style="padding-left:5px;"><span style="font-weight: bold;">D0140 shared w/ oral exam?</span>(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.D0140_shared_w_oral_exam__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.D0140_shared_w_oral_exam_Freq__c}"/></span></td>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Are posterior composites downgraded? </span>&nbsp;(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Oral_Exam_Freq__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Are posterior composites downgraded? </span>&nbsp;(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Are_posterior_composites_downgraded__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Prophylaxis:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Child_Prophylaxis__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Child_Prophylaxis_Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Child_Prophylaxis_Freq_To_Age__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Prophylaxis:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Prophylaxis__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Prophylaxis_Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Prophylaxis_To_Age__c}"/></span></td>
             <td style="padding-left:5px;"><span style="font-weight: bold;">Periodontal Maintenance:</span> :&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Composite_Fillings_D2391__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Composite_Filling_Freq__c}"/></span></td>
         </tr>
         <tr>
