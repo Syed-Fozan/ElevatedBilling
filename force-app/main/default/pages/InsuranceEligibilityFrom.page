@@ -1,5 +1,5 @@
 <apex:page controller="AestheticImplantDentistryController" renderAs="pdf">
-    <table style="font-family:sans-serif;">
+    <table style="font-family:sans-serif;font-weight: bold">
 				<tr>
 					<td><apex:image id="logo2" value="{!$Resource.logo2}" width="60" height="60"/></td>
 					<td style="text-align: center; font-size: 20px; font-weight: bold;margin-right:-40px;">Insurance Eligibility Form</td>
@@ -18,43 +18,73 @@
             <td >Insurance company:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Insurance_company__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">Maximum:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Maximum__c}"/></span></td>
+            <td>Maximum:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Maximum__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">Used to date:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Used_to_date__c}"/></span></td>
+            <td>Used to date:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Used_to_date__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">Deductible:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Deductible__c}"/></span></td> 
+            <td>Deductible:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Deductible__c}"/></span></td> 
         </tr>
         <tr>
-            <td style="padding-left:5px;">Has deductible been met:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Has_deductible_been_met__c}"/></span></td>
+            <td>Has deductible been met:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Has_deductible_been_met__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;font-weight: bold;">Preventative %:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Preventative__c}"/></span>&nbsp;&nbsp;Basic %:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Basic__c}"/></span>&nbsp;&nbsp;Major %:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Major__c}"/></span></td>
+            <td style="white-space: nowrap;">Preventative :<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Preventative__c}"/></span>&nbsp;&nbsp;Basic :<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Basic__c}"/></span>&nbsp;&nbsp;Major :<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Major__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-right:-10px;">Orthodontics%:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Orthodontics__c}"/></span>&nbsp;&nbsp;Max/Remaining:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Max_Remaining__c}"/></span>&nbsp;&nbsp;Age Limit:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age_Limit__c}"/></span></td>
-        </tr>
+					<td style="white-space: nowrap;">
+						Orthodontics: <span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Orthodontics__c}"/></span>&nbsp;&nbsp;
+						Max/Remaining: <span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Max_Remaining__c}"/></span>&nbsp;&nbsp;
+						Age Limit: <span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age_Limit__c}"/></span>
+				</td>        
+			</tr>
 				<br/>
         <tr>
             <td  style="font-weight: bold;color:#4040FF;padding-left:5px; padding-right:10px;">Is patient eligible for</td>    
         </tr>
 				<br/>
         <tr>
-            <td style="padding-left:5px;font-weight: bold;">Exam:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Exam__c}"/></span></td>
-        </tr>
-        <tr>
-            <td style="padding-left:5px;font-weight: bold;">Prophy:<span style="padding-left:2px; text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Prophy__c}"/></span></td>
-        </tr>
-        <tr>
-            <td style="padding-left:5px;font-weight: bold;">BWX:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.BWX__c}"/></span></td>
-        </tr>
-        <tr>
-            <td style="padding-left:5px;font-weight: bold;">FMX:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.FMX__c}"/></span></td>
-        </tr>
-        <tr>
-            <td style="padding-left:5px;font-weight: bold;">FL:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.FL__c}"/></span></td>
-        </tr>
+					<td style="padding-left: 5px; font-weight: bold;">
+						Exam:&nbsp;&nbsp;<span style="text-decoration: underline;">
+								<apex:outputText value="{! SUBSTITUTE(insuranceVerification.Exam__c, ',', ' &nbsp;&nbsp; ') }" escape="false"/>
+						</span>
+				</td>
+								</tr>
+								<br/>
+								<tr>
+									<td style="padding-left: 5px; font-weight: bold;">
+										Prophy:<span style="text-decoration: underline;">
+												<apex:outputText value="{! SUBSTITUTE(insuranceVerification.Prophy__c, ',', ' &nbsp;&nbsp; ') }" escape="false"/>
+										</span>
+								</td>
+								</tr>
+								<br/>
+								<tr>
+									<td style="padding-left: 5px; font-weight: bold;">
+										BWX:&nbsp;&nbsp;<span style="text-decoration: underline;">
+												<apex:outputText value="{! SUBSTITUTE(insuranceVerification.BWX__c, ',', ' &nbsp;&nbsp; ') }" escape="false"/>
+										</span>
+								</td>
+												</tr>
+												<br/>
+												<tr>
+													<td style="padding-left: 5px; font-weight: bold;">
+														FMX:&nbsp;&nbsp;<span style="text-decoration: underline;">
+																<apex:outputText value="{! SUBSTITUTE(insuranceVerification.FMX__c, ',', ' &nbsp;&nbsp; ') }" escape="false"/>
+														</span>
+												</td>
+																</tr>
+																<br/>
+																<tr>
+																	<td style="padding-left: 5px; font-weight: bold;">
+																		FL:&nbsp;&nbsp;<span style="text-decoration: underline;">
+																				<apex:outputText value="{! SUBSTITUTE(insuranceVerification.FL__c, ',', ' &nbsp;&nbsp; ') }" escape="false"/>
+																		</span>
+																</td>
+																				</tr>
+																				<br/>
+ 
         <tr>
             <td style="font-weight: bold;color:#000000;padding-left:5px; padding-right:10px;">Notes:</td>    
         </tr>
