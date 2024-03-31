@@ -1,20 +1,21 @@
 <apex:page controller="AestheticImplantDentistryController" renderAs="pdf">
     <table style="font-family:sans-serif;">
+				<tr>
+					<td><apex:image id="logo2" value="{!$Resource.logo2}" width="60" height="60"/></td>
+					<td style="text-align: center; font-size: 20px; font-weight: bold;margin-right:-40px;">Insurance Eligibility Form</td>
+
+				</tr>
         <tr>
-            <td><apex:image id="logo2" value="{!$Resource.logo2}" width="60" height="60"/></td>
-            <td style="text-align: center; font-size: 20px; font-weight: bold; padding-left:10px;">Insurance Eligibility Form</td>
+            <td style="text-align:center; font-size: 16px; font-weight: bold;">PATIENT/SUBSCRIBER INFORMATION</td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align:center; font-size: 16px; font-weight: bold;">PATIENT/SUBSCRIBER INFORMATION</td>
+            <td >Patient Name <span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Patient_Name__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">Patient Name <span style="text-decoration: underline;padding-left:5px;">&nbsp;<apex:outputField value="{!insuranceVerification.Patient_Name__c}"/></span></td>
+            <td>Group Name #<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Group_Name__c}"/></span>&nbsp;&nbsp;Group #:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Group__c}"/></span>&nbsp;&nbsp;Eff.Date<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Eff_Date__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">Group Name #<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Group_Name__c}"/></span>&nbsp;&nbsp;Group #:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Group__c}"/></span>&nbsp;&nbsp;Eff.Date<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Eff_Date__c}"/></span></td>
-        </tr>
-        <tr>
-            <td style="padding-left:5px;">Insurance company:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Insurance_company__c}"/></span></td>
+            <td >Insurance company:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Insurance_company__c}"/></span></td>
         </tr>
         <tr>
             <td style="padding-left:5px;">Maximum:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Maximum__c}"/></span></td>
@@ -29,34 +30,38 @@
             <td style="padding-left:5px;">Has deductible been met:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Has_deductible_been_met__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">Preventative %:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Preventative__c}"/></span>&nbsp;&nbsp;Basic %:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Basic__c}"/></span>&nbsp;&nbsp;Major %:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Major__c}"/></span></td>
+            <td style="padding-left:5px;font-weight: bold;">Preventative %:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Preventative__c}"/></span>&nbsp;&nbsp;Basic %:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Basic__c}"/></span>&nbsp;&nbsp;Major %:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Major__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:2px;">Orthodontics%:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Orthodontics__c}"/></span>&nbsp;&nbsp;Max/Remaining:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Max_Remaining__c}"/></span>&nbsp;&nbsp;Age Limit:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age_Limit__c}"/></span></td>
+            <td style="padding-right:-10px;">Orthodontics%:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Orthodontics__c}"/></span>&nbsp;&nbsp;Max/Remaining:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Max_Remaining__c}"/></span>&nbsp;&nbsp;Age Limit:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age_Limit__c}"/></span></td>
+        </tr>
+				<br/>
+        <tr>
+            <td  style="font-weight: bold;color:#4040FF;padding-left:5px; padding-right:10px;">Is patient eligible for</td>    
+        </tr>
+				<br/>
+        <tr>
+            <td style="padding-left:5px;font-weight: bold;">Exam:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Exam__c}"/></span></td>
         </tr>
         <tr>
-            <td colspan="2" style="color:#4040FF;padding-left:5px; padding-right:10px;">Is patient eligible for</td>    
+            <td style="padding-left:5px;font-weight: bold;">Prophy:<span style="padding-left:2px; text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Prophy__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">Exam:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Exam__c}"/></span></td>
+            <td style="padding-left:5px;font-weight: bold;">BWX:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.BWX__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">Prophy:<span style="padding-left:2px; text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Prophy__c}"/></span></td>
+            <td style="padding-left:5px;font-weight: bold;">FMX:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.FMX__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">BWX:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.BWX__c}"/></span></td>
+            <td style="padding-left:5px;font-weight: bold;">FL:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.FL__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;">FMX:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.FMX__c}"/></span></td>
+            <td style="font-weight: bold;color:#000000;padding-left:5px; padding-right:10px;">Notes:</td>    
         </tr>
-        <tr>
-            <td style="padding-left:5px;">FL:<span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.FL__c}"/></span></td>
-        </tr>
-        <tr>
-            <td colspan="2" style="color:#000000;padding-left:5px; padding-right:10px;">Notes:</td>    
-        </tr>
-    </table>
+				<br/>
+
     <footer style="width: 100%; background-color: white; position: fixed; clear: both;font-size: 8px;" >
         <span style="font-weight: bold;">Disclaimer: </span>  This is a summary of plan benefits and is not intended to be a contract. Actual coverage will be determined when the claim is processed subject to all contract terms, including, but not limited to, member benefits, benefit maximums and subscription charge payment covering the actual dates of service. This is not a dental pre-determination of benefits or a guarantee of payment.
     </footer>  
+	</table>
 </apex:page>
