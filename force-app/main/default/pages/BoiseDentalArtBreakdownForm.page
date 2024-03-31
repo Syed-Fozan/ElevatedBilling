@@ -43,14 +43,14 @@
         </tr>
         <tr>
             <td style="padding-left:5px;"><span style="font-weight: bold;">In Network:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.In_Network__c}"/></span>&nbsp;<span style="font-weight: bold;">Fee Schedule&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Fee_Schedule__c}"/></span></td>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Patient Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Patient_Name__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Patient Name</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Patient_Date_of_Birth__c}"/></span></td>
         </tr>
         <tr>
             <td style="padding-left:5px;"><span style="font-weight: bold;">Are there Out of Network Benefits?(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Are_there_Out_of_Network_Benefits__c}"/></span></td>
             <td style="padding-left:5px;"><span style="font-weight: bold;">Date of Birth</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Date_Of_Birth__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Payment sent to Office or Subscriber?</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Plan_Type__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Payment sent to Office or Subscriber?</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Payment_sent_to_Office_or_Subscriber__c}"/></span></td>
         </tr>
         <tr>
             <td style="padding-left:5px;"><span style="font-weight: bold;">Plan Type (Ex. DHMO,PPO,EPO,HMO):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Plan_Type__c}"/></span></td>
@@ -64,10 +64,9 @@
             <br/>
             <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:30px; background-color:#988a8a; color:#6767c4;">
                 <tr>
-                    <td style="padding-left:5px;"><span style="font-weight: none;">Waiting Period? (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span></td>
-                </tr>
+                    <td style="padding-left:5px;"><span style="font-weight: none;">Waiting Period? (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span><span style="font-weight: none;">Duration:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Duration__c}"/></span></td>                </tr>
                 <tr>
-                    <td style="padding-left:5px;">Limitation: &nbsp; <apex:outputField value="{!insuranceVerification.Rep_Name__c}"/></td>
+                    <td style="padding-left:5px;">Limitation: &nbsp; <apex:outputField value="{!insuranceVerification.Limitations__c}"/></td>
                 </tr>
             </table>
         </div>
@@ -169,7 +168,7 @@
             <th style="padding-left:5px; padding-right:150px; color:#4040FF;">Ortho&nbsp;<Span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Ortho__c}"/></Span></th>    
         </tr>
         <tr>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Crowns, Inlays, Onlays, Labial Veneers:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Crowns_Inlays_Onlays_Labial_Veneers__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Crowns_Inlays_Onlays_LabialVeneers_Freq__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Crowns, Inlays, Onlays, Labial Veneers:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Crowns_Inlays_Onlays_Labial_Veneers__c}"/></span></td>
             <td style="padding-left:5px;"><span style="font-weight: bold;">Auto Pay?:(Y/N)</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Auto_Pay__c}"/></span><span style="font-weight: bold;">,Claim Submit Freq:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Claim_Submit_Freq__c}"/></span></td>
         </tr>
         <tr>
@@ -211,7 +210,7 @@
     </table>
     <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:30px; background-color:#988a8a; color:#6767c4;">
         <tr>
-            <td style="padding-left:5px;"><span style="font-weight: none;">Missing Tooth Clause (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: none;">Missing Tooth Clause (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Missing_Tooth_Clause__c}"/></span></td>
         </tr>   
     </table>
     <hr style=" margin-right:40px; width:57%; color:black;"/>
