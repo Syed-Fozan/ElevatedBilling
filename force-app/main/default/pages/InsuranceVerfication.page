@@ -66,14 +66,14 @@
     <td style="padding-left:5px;"><span style="font-weight: bold;">Payment issued to Subscriber or Office?:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Payment_issued_to_Subscriber_or_Office__c}"/></span></td>
 </tr>
 </table>
-<table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:30px; background-color:#988a8a; color:#fff;">
+<table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:0px; padding-right:30px; background-color:#988a8a; color:#fff;">
 <tr>
-    <td style="padding-left:5px;">Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!insuranceVerification.Due_Date__c}" /></apex:outputText>&nbsp; Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText></td></tr>
+    <td style="padding-left:0px;">Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!insuranceVerification.Due_Date__c}" /></apex:outputText>&nbsp; Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText></td></tr>
 <tr>
-    <td style="padding-left:5px;">Rep Name: &nbsp; <apex:outputField value="{!insuranceVerification.Rep_Name__c}"/></td>
+    <td style="padding-left:0px;">Rep Name: &nbsp; <apex:outputField value="{!insuranceVerification.Rep_Name__c}"/></td>
 </tr>
 <tr>
-    <td style="padding-left:5px;">Ref#: &nbsp; <apex:outputField value="{!insuranceVerification.Ref_Number__c}"/>&nbsp;<span>EBS: &nbsp; <apex:outputField value="{!insuranceVerification.EBS__c}"/></span></td>
+    <td style="padding-left:0px;">Ref#: &nbsp; <apex:outputField value="{!insuranceVerification.Ref_Number__c}"/>&nbsp;<span>EBS: &nbsp; <apex:outputField value="{!insuranceVerification.EBS__c}"/></span></td>
 </tr>
 
 </table>

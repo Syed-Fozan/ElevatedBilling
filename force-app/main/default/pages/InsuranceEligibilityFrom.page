@@ -3,6 +3,8 @@
         <tr>
             <td><apex:image id="logo2" value="{!$Resource.logo2}" width="60" height="60"/></td>
             <td style="text-align: center; font-size: 20px; font-weight: bold;margin-right:-100px;">Insurance Eligibility Form</td>
+						<td></td>
+
 
         </tr>
 				<div style="text-align: center;">
@@ -10,7 +12,7 @@
 							<tr>
 									<td >Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!insuranceVerification.Due_Date__c}" /></apex:outputText>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText>&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBS: &nbsp; <apex:outputField value="{!insuranceVerification.EBS__c}"/></span></td>
 							</tr>
-							<tr style="padding-left:-20px">
+							<tr>
 									<td >Rep Name: &nbsp; <apex:outputField value="{!insuranceVerification.Rep_Name__c}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ref#: &nbsp; <apex:outputField value="{!insuranceVerification.Ref_Number__c}"/>&nbsp;</td>
 							</tr>
 				
@@ -22,27 +24,43 @@
         <tr>
             <td >Patient Name <span style="text-decoration: underline;">&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Patient_Name__c}"/></span></td>
         </tr>
-        <tr>
+				<br/>
+
+        <tr style="white-space: nowrap;">
             <td>Group Name #<span style="text-decoration: underline;">&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Group_Name__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group #:<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Group__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eff.Date<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Eff_Date__c}"/></span></td>
         </tr>
+				<br/>
+
         <tr>
             <td >Insurance company:<span style="text-decoration: underline;">&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Insurance_company__c}"/></span></td>
         </tr>
+				<br/>
+
         <tr>
             <td>Maximum:<span style="text-decoration: underline;">&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Maximum__c}"/></span></td>
         </tr>
+				<br/>
+
         <tr>
             <td>Used to date:<span style="text-decoration: underline;">&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Used_to_date__c}"/></span></td>
         </tr>
+				<br/>
+
         <tr>
             <td>Deductible:<span style="text-decoration: underline;">&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Deductible__c}"/></span></td> 
         </tr>
+				<br/>
+
         <tr>
             <td>Has deductible been met:<span style="text-decoration: underline;">&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Has_deductible_been_met__c}"/></span></td>
         </tr>
+				<br/>
+
         <tr>
             <td style="white-space: nowrap;">Preventative :<span style="text-decoration: underline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Preventative__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basic :<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Basic__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Major :<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Major__c}"/></span></td>
         </tr>
+				<br/>
+
         <tr>
             <td style="white-space: nowrap;">
                 Orthodontics: <span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Orthodontics__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
