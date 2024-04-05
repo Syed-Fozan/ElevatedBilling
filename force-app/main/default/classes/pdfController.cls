@@ -26,6 +26,8 @@ public class pdfController {
                     return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/buckheadDentalStudioBreakdownForm?id=' + recordId;
                 } else if (recordTypeName == 'Alameda Breakdown') {
                     return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/AlamedaBreakdown?id=' + recordId; 
+                } else if (recordTypeName == 'BellaDentalBreakdown') {
+                    return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/BellaDentalBreakdown?id=' + recordId; 
                 } else if (recordTypeName == 'Insurance Eligilibity') {
                 return 'https://elevatebillingsolutions--farukhtst--c.sandbox.vf.force.com/apex/InsuranceEligibilityFrom?id=' + recordId; 
             }
