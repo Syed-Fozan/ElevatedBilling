@@ -62,22 +62,22 @@
         <div style="float:left;">
             <br/>
             <br/>
-            <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:3px; padding-right:8px; background-color:#988a8a; color:#6767c4;">
+            <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:-10px; padding-right:-40px; background-color:#988a8a; color:#6767c4;">
                 <tr>
-                    <td style="padding-right:3px;"><span style="font-weight: none;">Waiting Period? (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span><span style="font-weight: none;">Duration:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Duration__c}"/></span></td>                </tr>
+                    <td><span style="font-weight: none;">Waiting Period? (Y/N):</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Waiting_Period__c}"/></span><span style="font-weight: none;">Duration:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Duration__c}"/></span></td>                </tr>
                 <tr>
-                    <td style="padding-right:3px;">Limitation: &nbsp; <apex:outputField value="{!insuranceVerification.Limitations__c}"/></td>
+                    <td >Limitation: &nbsp; <apex:outputField value="{!insuranceVerification.Limitations__c}"/></td>
                 </tr>
             </table>
         </div>
         <br/>
         <div style="float:right;">
-            <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-right:10px; padding-left:5px; background-color:#988a8a; color:#000000;">
+            <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-right:30px; padding-left:5px; background-color:#988a8a; color:#000000;">
                 <tr>
                     <td ><span style="font-weight: bold;">Individual Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Individual_Deductible__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Individual_Deductible_Met_To__c}"/></span></td>
                 </tr>
                 <tr>
-                    <td ><span style="font-weight: bold;">Family Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Family_Deductible__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Family_Deductible_Met_To_Date__c	}"/></span></td>
+                    <td ><span style="font-weight: bold;">Family Deductible:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Family_Deductible__c}"/></span>&nbsp;<span style="font-weight: bold;">Met To Date:&nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Family_Deductible_Met_To_Date__c  }"/></span></td>
                 </tr>
                 <tr>
                     <td><span style="font-weight: bold;">Deductible applies to:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Deductible_applies_to__c}"/></span></td>
@@ -107,7 +107,9 @@
         </tr>
         
     </table>
-    <br/>
+    <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif; background-color:#988a8a; color:#ad1c1c;">
+        <footer style="padding-left:5px; width: 35%; background-color: white; position: fixed; clear: both;font-size: 8px;" > ** PLEASE NOTE - For insurance plans that are out of network,insurance pays up to their allowed amount, patient may be responsible for the difference.</footer>   
+    </table>
     <table style="font-family:sans-serif;">
         <tr>
             <td></td>

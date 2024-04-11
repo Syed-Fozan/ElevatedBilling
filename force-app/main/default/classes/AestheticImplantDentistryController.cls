@@ -9,7 +9,7 @@ public class AestheticImplantDentistryController {
     public InsuranceVerfication__c getInsuranceVerification(String recordId) {
         if (recordId != null) {
             List<InsuranceVerfication__c> records = [SELECT  Payor_ID__c,
-                                                     Adult_Prophy__c, Insurance_Name__c,Ins_Phone__c,Insurance_Effective_Date__c,Sealant_Limitations__c,D0396_CT_Scan_Freq__c,D0396_CT_Scan__c,
+                                                     Adult_Prophy__c,Image__c, Insurance_Name__c,Ins_Phone__c,Insurance_Effective_Date__c,Sealant_Limitations__c,D0396_CT_Scan_Freq__c,D0396_CT_Scan__c,
                                                      Adult_Prophy_Freq__c, Other_Method_COB__c, Is_plan_a_Cal_Year_or_Benefit_Year__c,Missing_Tooth_Clause__c,
                                                      Adult_Prophy_Freq_To_Age__c,Max_Applies_To_Diag_Prev__c,Rep_Name__c,Due_Date__c,Age_Limit__c,Patient_Date_of_Birth__c,
                                                      Age__c,Class_I_Preventive__c, D0274__c,D0274_Freq__c,Basic__c,Orthodontics__c,Max_Remaining__c,Ging_Inflamm_D4346_freq__c,    

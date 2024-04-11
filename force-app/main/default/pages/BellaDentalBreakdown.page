@@ -1,5 +1,6 @@
 <apex:page controller="AestheticImplantDentistryController" renderAs="pdf">
-    
+
+
     <table style="font-family:sans-serif;font-weight: bold;">
         <tr>
             <td><apex:image id="logo2" value="{!$Resource.logo2}" width="60" height="60"/></td>
@@ -107,7 +108,9 @@
         </tr>
         
     </table>
-    <br/>
+    <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif; background-color:#988a8a; color:#ad1c1c;">
+        <footer style="padding-left:5px; width: 35%; background-color: white; position: fixed; clear: both;font-size: 8px;" > ** PLEASE NOTE - For insurance plans that are out of network,insurance pays up to their allowed amount, patient may be responsible for the difference.</footer>   
+    </table>
     <table style="font-family:sans-serif;">
         <tr>
             <td></td>
