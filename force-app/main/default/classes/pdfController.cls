@@ -1,12 +1,13 @@
 public class pdfController {
     public InsuranceVerfication__c obj { get; set; }
+    public Blob file { get; set; }
+    public String filename { get; set; }
     
     // Constructor
     public pdfController() {
         
     }
     
-    // Method to determine which Visualforce page to render based on record type
     @AuraEnabled
     public static String generatePDF(String recordId) {
         InsuranceVerfication__c insuranceVerificationRecord;
@@ -37,6 +38,23 @@ public class pdfController {
             System.debug('Error fetching Insurance Verification Record: ' + e.getMessage());
         }
         return null;
+    }
+
+    public void uploadFile() {
+        ContentVersion contentVersion = new ContentVersion();
+        contentVersion.Title = filename;
+        contentVersion.PathOnClient = filename;
+        contentVersion.VersionData = file;
+
+        insert contentVersion;
+
+        ContentDocumentLink contentLink = new ContentDocumentLink();
+        contentLink.ContentDocumentId = [SELECT Id, ContentDocumentId FROM ContentVersion WHERE Id = :contentVersion.Id].ContentDocumentId;
+        contentLink.LinkedEntityId = UserInfo.getUserId();
+        contentLink.ShareType = 'V';
+        contentLink.Visibility = 'AllUsers';
+
+        insert contentLink;
     }
     
 }

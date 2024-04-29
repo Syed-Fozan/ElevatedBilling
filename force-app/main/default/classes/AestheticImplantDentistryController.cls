@@ -1,15 +1,23 @@
 public class AestheticImplantDentistryController {
     public InsuranceVerfication__c insuranceVerification { get; set; }
+    private final String versionData;
     
     public AestheticImplantDentistryController() {
         String recordId = ApexPages.currentPage().getParameters().get('id');
         insuranceVerification = getInsuranceVerification(recordId);
     }
+    public PreviewContentVersionCTR() {
+        ContentVersion cv = [SELECT Id  FROM ContentDocument   LIMIT 1];       
+        versionData = EncodingUtil.base64Encode(cv.VersionData);
+    }
+    public String getVersionData() {
+        return versionData;
+    }
     
     public InsuranceVerfication__c getInsuranceVerification(String recordId) {
         if (recordId != null) {
             List<InsuranceVerfication__c> records = [SELECT  Payor_ID__c,
-                                                     Adult_Prophy__c,Image__c, Insurance_Name__c,Ins_Phone__c,Insurance_Effective_Date__c,Sealant_Limitations__c,D0396_CT_Scan_Freq__c,D0396_CT_Scan__c,
+                                                     Adult_Prophy__c, Insurance_Name__c,Ins_Phone__c,Insurance_Effective_Date__c,Sealant_Limitations__c,D0396_CT_Scan_Freq__c,D0396_CT_Scan__c,
                                                      Adult_Prophy_Freq__c, Other_Method_COB__c, Is_plan_a_Cal_Year_or_Benefit_Year__c,Missing_Tooth_Clause__c,
                                                      Adult_Prophy_Freq_To_Age__c,Max_Applies_To_Diag_Prev__c,Rep_Name__c,Due_Date__c,Age_Limit__c,Patient_Date_of_Birth__c,
                                                      Age__c,Class_I_Preventive__c, D0274__c,D0274_Freq__c,Basic__c,Orthodontics__c,Max_Remaining__c,Ging_Inflamm_D4346_freq__c,    
@@ -27,7 +35,7 @@ public class AestheticImplantDentistryController {
                                                      Dental_Maximum_Remaining__c,D9630__c, Periapical__c,Periapical_Freq__c,Deductible__c,Duration__c,
                                                      Employer_Group_Name__c,SDF_D1354__c,SDF_D1354_Freq__c,SDF_D1354_To_Age__c,Prophy__c,BWX__c, 
                                                      Family_Deductible__c,D9630_Freq__c,Frenectomy_D7961_D7962__c,Fluoride_Age_Limit__c,Fluoride_Freq__c, 
-                                                     Family_Deductible_Met_To_Date__c,Pulpotomy_D3220__c,Panoramic_FMX_Freq__c, 
+                                                     Family_Deductible_Met_To_Date__c,Pulpotomy_D3220__c,Panoramic_FMX_Freq__c,Implants_D6010__c, 
                                                      Fee_Schedule__c,Ortho_Deductible__c,Comp_Exam_D0150_Freq__c,Implant_Abutment_D6056_D6057__c, 
                                                      In_Network__c,D1515__c,D1515_To_Age__c,PA_s_D0220__c,Panoramic_FMX__c,	Implant_Abutment_D6056_D6057_Freq__c,
                                                      Individual_Deductible__c,Ortho_Ded_Met__c,PA_s_D0220_Freq__c,Freq__c,Implant_Crown_D6056_D6057__c, 
@@ -42,7 +50,7 @@ public class AestheticImplantDentistryController {
                                                      Subscriber_Date_Of_Birth__c,Pallative_D9110__c,Bitewings_Freq__c,Bitewings__c,FL__c, 
                                                      Subscriber_ID__c,Auto_Pay__c,Pallative_D9110_Freq__c,Crown_Build_up_Freq__c,Has_deductible_been_met__c, 
                                                      Subscriber_Name__c,Claim_Submit_Freq__c,Frenectomy_D7961_D7962_Freq__c,Fillings__c, 
-                                                     Subscriber_Plan_Type__c,Bitewings_D0272__c,Bitewings_D0272_Freq__c,Bitewings_D0272_To_Age__c,
+                                                     Bitewings_D0272__c,Bitewings_D0272_Freq__c,Bitewings_D0272_To_Age__c,
                                                      Waiting_Period__c ,D0240__c,D0240_Freq__c,D0240_to_Age__c,Group_Name__c,Group__c,Eff_Date__c
                                                      FROM InsuranceVerfication__c 
                                                      WHERE Id = :recordId
