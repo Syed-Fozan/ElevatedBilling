@@ -164,7 +164,7 @@
         </tr>
         <tr>
             <td style="padding-left:5px;"><span style="font-weight: bold;">Sealant Limitations?</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Sealant_Limitations__c}"/></span></td>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Nightguards </span>D9944 &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Ortho_Deductible__c}"/></span><span > Criteria: &nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Ortho_Ded_Met__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Nightguards </span>D9944 &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Nightguards_D9944__c}"/></span><span > Criteria: &nbsp;</span><span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Criteria__c}"/></span></td>
             
         </tr>
         <tr>
