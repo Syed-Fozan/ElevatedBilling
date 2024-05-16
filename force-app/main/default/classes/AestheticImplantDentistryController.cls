@@ -42,7 +42,7 @@ public class AestheticImplantDentistryController {
                                                      Standard_COB__c,Payment_Frequency__c,Simple_Ext_D7140__c,Surgical_Ext__c,FMX__c,
                                                      Subscriber_Date_Of_Birth__c,Pallative_D9110__c,Bitewings_Freq__c,Bitewings__c,FL__c, 
                                                      Subscriber_ID__c,Auto_Pay__c,Pallative_D9110_Freq__c,Crown_Build_up_Freq__c,Has_deductible_been_met__c, 
-                                                     Subscriber_Name__c,Claim_Submit_Freq__c,Frenectomy_D7961_D7962_Freq__c,Fillings__c, 
+                                                     Subscriber_Name__c,Claim_Submit_Freq__c,Frenectomy_D7961_D7962_Freq__c,Fillings__c, Date__c,
                                                      Bitewings_D0272__c,Bitewings_D0272_Freq__c,Bitewings_D0272_To_Age__c,	Nightguards_D9944__c,
                                                      Waiting_Period__c ,D0240__c,D0240_Freq__c,D0240_to_Age__c,Group_Name__c,Group__c,Eff_Date__c
                                                      FROM InsuranceVerfication__c 

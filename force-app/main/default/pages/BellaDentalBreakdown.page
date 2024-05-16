@@ -99,7 +99,9 @@
     
     <table style="border:solid 0.5px #000; border-top:none; font-family:sans-serif;padding-left:5px; padding-right:30px; background-color:#988a8a; color:#000000;">
         <tr>
-            <td style="padding-left:5px;">Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!insuranceVerification.Due_Date__c}" /></apex:outputText>&nbsp; Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText></td></tr>
+            <td style="padding-left:5px;">Date:    <apex:outputText value="{!DAY(insuranceVerification.Date__c)}-{!MONTH(insuranceVerification.Date__c)}-{!YEAR(insuranceVerification.Date__c)} Time:{0,date,HH:mm:ss}">
+                <apex:param value="{!NOW()}" />
+            </apex:outputText></td></tr>
         <tr>
             <td style="padding-left:5px;">Rep Name: &nbsp; <apex:outputField value="{!insuranceVerification.Rep_Name__c}"/></td>
         </tr>
@@ -132,7 +134,7 @@
             <td style="padding-left:5px;"><span style="font-weight: bold;">Are posterior composites downgraded? </span>&nbsp;(Y/N)&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Are_posterior_composites_downgraded__c}"/></span></td>
         </tr>
         <tr>
-            <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Prophylaxis:</span>&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Prophylaxis__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Prophylaxis_Freq__c}"/></span>To Age.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Prophylaxis_To_Age__c}"/></span></td>
+            <td style="padding-left:5px;"><span style="font-weight: bold;">Routine Prophylaxis:</span>&nbsp;Freq &nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Routine_Prophylaxis__c}"/></span></td>
             <td style="padding-left:5px;"><span style="font-weight: bold;">Ging. Inflamm.: D4346</span> :&nbsp;<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Ging_Inflamm_D4346__c}"/></span>Freq.<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Ging_Inflamm_D4346_freq__c}"/></span></td>
         </tr>
         <tr>
@@ -225,6 +227,8 @@
     <hr style=" margin-right:40px; width:57%; color:black;"/>
     
     <footer style="width: 100%; background-color: white; position: fixed; clear: both;font-size: 8px;" ><span style="font-weight: bold;">Disclaimer: </span>  This is a summary of plan benefits and is not intended to be a contract. Actual coverage will be determined when the claim is processed subject to all contract terms, including, but not limited to, member benefits, benefit maximums and subscription charge payment covering the actual dates of service. This is not a dental pre-determination of benefits or a guarantee of payment.
-    </footer>  
+    </footer>    
     
+    <apex:iframe src="https://amazon.com" scrolling="true" id="theIframe"/>
+
 </apex:page>
