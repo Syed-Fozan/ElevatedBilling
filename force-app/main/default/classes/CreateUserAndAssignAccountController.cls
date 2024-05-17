@@ -9,13 +9,12 @@ public class CreateUserAndAssignAccountController {
     public String locale { get; set; }
     public String emailEncoding { get; set; }
     public String language { get; set; }
-    public List<Id> selectedAccountIds { get; set; }
     public Id selectedProfileId { get; set; }
     public Id selectedRoleId { get; set; }
 
     public User newUser { get; set; }
 
-    public List<SelectOption> accountOptions { get; set; }
+    public List<AccountWrapper> accountOptions { get; set; }
     public List<SelectOption> timeZoneOptions { get; set; }
     public List<SelectOption> localeOptions { get; set; }
     public List<SelectOption> emailEncodingOptions { get; set; }
@@ -25,9 +24,9 @@ public class CreateUserAndAssignAccountController {
 
     public CreateUserAndAssignAccountController() {
         newUser = new User(); // Initialize new User object
-        accountOptions = new List<SelectOption>();
+        accountOptions = new List<AccountWrapper>();
         for (Account acc : [SELECT Id, Name FROM Account]) {
-            accountOptions.add(new SelectOption(acc.Id, acc.Name));
+            accountOptions.add(new AccountWrapper(acc));
         }
 
         timeZoneOptions = new List<SelectOption>();
@@ -109,22 +108,38 @@ public class CreateUserAndAssignAccountController {
     }
 
     public void createUserAndAssignAccount() {
-        newUser.Username = username;
-        newUser.Email = email;
-        newUser.FirstName = firstName;
-        newUser.LastName = lastName;
-        newUser.Alias = alias;
-        newUser.TimeZoneSidKey = timeZone;
-        newUser.LocaleSidKey = locale;
-        newUser.EmailEncodingKey = emailEncoding;
-        newUser.LanguageLocaleKey = language;
-        newUser.ProfileId = selectedProfileId;
-        newUser.UserRoleId = selectedRoleId;
-        insert newUser;
+        try {
+            newUser.Username = username;
+            newUser.Email = email;
+            newUser.FirstName = firstName;
+            newUser.LastName = lastName;
+            newUser.Alias = alias;
+            newUser.TimeZoneSidKey = timeZone;
+            newUser.LocaleSidKey = locale;
+            newUser.EmailEncodingKey = emailEncoding;
+            newUser.LanguageLocaleKey = language;
+            newUser.ProfileId = selectedProfileId;
+            newUser.UserRoleId = selectedRoleId;
+            insert newUser;
 
-        // Use future method to grant access to the selected Account records
-        if (selectedAccountIds != null && !selectedAccountIds.isEmpty()) {
-            CreateUserAndAssignAccountController.addAccountShares(newUser.Id, selectedAccountIds);
+            // Collect selected accounts
+            List<Id> selectedAccountIds = new List<Id>();
+            for (AccountWrapper accWrapper : accountOptions) {
+                if (accWrapper.selected) {
+                    selectedAccountIds.add(accWrapper.account.Id);
+                }
+            }
+
+            // Use future method to grant access to the selected Account records
+            if (selectedAccountIds != null && !selectedAccountIds.isEmpty()) {
+                CreateUserAndAssignAccountController.addAccountShares(newUser.Id, selectedAccountIds);
+            }
+
+            // Add success message
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.CONFIRM, 'User created successfully and accounts assigned.'));
+        } catch (Exception e) {
+            // Add error message
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Error creating user: ' + e.getMessage()));
         }
     }
 
@@ -140,5 +155,17 @@ public class CreateUserAndAssignAccountController {
             shares.add(share);
         }
         insert shares;
+        System.debug('Account Shares Inserted: ' + shares);
+    }
+
+    // Wrapper class to hold Account data and selected status
+    public class AccountWrapper {
+        public Account account { get; set; }
+        public Boolean selected { get; set; }
+        
+        public AccountWrapper(Account acc) {
+            this.account = acc;
+            this.selected = false;
+        }
     }
 }
