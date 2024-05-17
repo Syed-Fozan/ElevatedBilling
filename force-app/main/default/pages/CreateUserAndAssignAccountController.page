@@ -1,0 +1,41 @@
+<apex:page controller="CreateUserAndAssignAccountController">
+    <apex:form>
+        <apex:pageBlock title="Create User and Assign Accounts">
+            <apex:pageBlockSection title="User Details" columns="2">
+                <apex:inputField value="{!newUser.Username}" label="Username" required="true"/>
+                <apex:inputField value="{!newUser.Email}" label="Email" required="true"/>
+                <apex:inputField value="{!newUser.FirstName}" label="First Name" required="true"/>
+                <apex:inputField value="{!newUser.LastName}" label="Last Name" required="true"/>
+                <apex:inputField value="{!newUser.Alias}" label="Alias" required="true"/>
+                <apex:selectList value="{!timeZone}" size="1">
+                    <apex:selectOptions value="{!timeZoneOptions}"/>
+                </apex:selectList>
+                <apex:selectList value="{!locale}" size="1">
+                    <apex:selectOptions value="{!localeOptions}"/>
+                </apex:selectList>
+                <apex:selectList value="{!emailEncoding}" size="1">
+                    <apex:selectOptions value="{!emailEncodingOptions}"/>
+                </apex:selectList>
+                <apex:selectList value="{!language}" size="1">
+                    <apex:selectOptions value="{!languageOptions}"/>
+                </apex:selectList>
+                <apex:selectList value="{!selectedProfileId}" size="1">
+                    <apex:selectOptions value="{!profileOptions}"/>
+                </apex:selectList>
+                <apex:selectList value="{!selectedRoleId}" size="1">
+                    <apex:selectOptions value="{!roleOptions}"/>
+                </apex:selectList>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="Assign Accounts" columns="1">
+                <apex:selectList value="{!selectedAccountIds}" multiselect="true" size="10">
+                    <apex:selectOptions value="{!accountOptions}"/>
+                </apex:selectList>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons>
+                <apex:commandButton value="Create User" action="{!createUserAndAssignAccount}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
