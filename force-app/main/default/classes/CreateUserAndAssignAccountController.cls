@@ -1,114 +1,85 @@
 public class CreateUserAndAssignAccountController {
-    public String username { get; set; }
-    public String email { get; set; }
-    public String firstName { get; set; }
-    public String lastName { get; set; }
-    public String password { get; set; }
-    public String alias { get; set; }
-    public String timeZone { get; set; }
-    public String locale { get; set; }
-    public String emailEncoding { get; set; }
-    public String language { get; set; }
-    public Id selectedProfileId { get; set; }
-    public Id selectedRoleId { get; set; }
+    @AuraEnabled
+    public static PicklistValuesWrapper getPicklistValues() {
+        PicklistValuesWrapper picklistValues = new PicklistValuesWrapper();
 
-    public User newUser { get; set; }
+        picklistValues.timeZoneOptions = populateTimeZoneOptions();
+        picklistValues.localeOptions = populateLocaleOptions();
+        picklistValues.emailEncodingOptions = populateEmailEncodingOptions();
+        picklistValues.languageOptions = populateLanguageOptions();
+        picklistValues.profileOptions = populateProfileOptions();
+        picklistValues.roleOptions = populateRoleOptions();
+        picklistValues.accountOptions = populateAccountOptions();
 
-    public List<AccountWrapper> accountOptions { get; set; }
-    public List<SelectOption> timeZoneOptions { get; set; }
-    public List<SelectOption> localeOptions { get; set; }
-    public List<SelectOption> emailEncodingOptions { get; set; }
-    public List<SelectOption> languageOptions { get; set; }
-    public List<SelectOption> profileOptions { get; set; }
-    public List<SelectOption> roleOptions { get; set; }
-
-    public CreateUserAndAssignAccountController() {
-        newUser = new User(); // Initialize new User object
-        accountOptions = new List<AccountWrapper>();
-        for (Account acc : [SELECT Id, Name FROM Account]) {
-            accountOptions.add(new AccountWrapper(acc));
-        }
-
-        timeZoneOptions = new List<SelectOption>();
-        populateTimeZoneOptions();
-
-        localeOptions = new List<SelectOption>();
-        populateLocaleOptions();
-
-        emailEncodingOptions = new List<SelectOption>();
-        populateEmailEncodingOptions();
-
-        languageOptions = new List<SelectOption>();
-        populateLanguageOptions();
-
-        profileOptions = new List<SelectOption>();
-        populateProfileOptions();
-
-        roleOptions = new List<SelectOption>();
-        populateRoleOptions();
-
-        setDefaultValues();
+        return picklistValues;
     }
 
-    private void populateTimeZoneOptions() {
-        // Populate with a few sample time zones
-        timeZoneOptions.add(new SelectOption('America/Los_Angeles', 'America/Los_Angeles'));
-        timeZoneOptions.add(new SelectOption('America/New_York', 'America/New_York'));
-        timeZoneOptions.add(new SelectOption('Europe/London', 'Europe/London'));
-        timeZoneOptions.add(new SelectOption('Asia/Kolkata', 'Asia/Kolkata'));
-        timeZoneOptions.add(new SelectOption('Asia/Tokyo', 'Asia/Tokyo'));
+    private static List<SelectOption> populateTimeZoneOptions() {
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('America/Los_Angeles', 'America/Los_Angeles'));
+        options.add(new SelectOption('America/New_York', 'America/New_York'));
+        options.add(new SelectOption('Europe/London', 'Europe/London'));
+        options.add(new SelectOption('Asia/Kolkata', 'Asia/Kolkata'));
+        options.add(new SelectOption('Asia/Tokyo', 'Asia/Tokyo'));
+        return options;
     }
 
-    private void populateLocaleOptions() {
-        // Populate with a few sample locales
-        localeOptions.add(new SelectOption('en_US', 'English (United States)'));
-        localeOptions.add(new SelectOption('fr_FR', 'French (France)'));
-        localeOptions.add(new SelectOption('de_DE', 'German (Germany)'));
-        localeOptions.add(new SelectOption('es_ES', 'Spanish (Spain)'));
-        localeOptions.add(new SelectOption('zh_CN', 'Chinese (China)'));
+    private static List<SelectOption> populateLocaleOptions() {
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('en_US', 'English (United States)'));
+        options.add(new SelectOption('fr_FR', 'French (France)'));
+        options.add(new SelectOption('de_DE', 'German (Germany)'));
+        options.add(new SelectOption('es_ES', 'Spanish (Spain)'));
+        options.add(new SelectOption('zh_CN', 'Chinese (China)'));
+        return options;
     }
 
-    private void populateEmailEncodingOptions() {
-        // Populate with a few sample email encodings
-        emailEncodingOptions.add(new SelectOption('UTF-8', 'UTF-8'));
-        emailEncodingOptions.add(new SelectOption('ISO-8859-1', 'ISO-8859-1'));
+    private static List<SelectOption> populateEmailEncodingOptions() {
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('UTF-8', 'UTF-8'));
+        options.add(new SelectOption('ISO-8859-1', 'ISO-8859-1'));
+        return options;
     }
 
-    private void populateLanguageOptions() {
-        // Populate with a few sample languages
-        languageOptions.add(new SelectOption('en_US', 'English (United States)'));
-        languageOptions.add(new SelectOption('fr_FR', 'French (France)'));
-        languageOptions.add(new SelectOption('de_DE', 'German (Germany)'));
-        languageOptions.add(new SelectOption('es_ES', 'Spanish (Spain)'));
-        languageOptions.add(new SelectOption('zh_CN', 'Chinese (China)'));
+    private static List<SelectOption> populateLanguageOptions() {
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('en_US', 'English (United States)'));
+        options.add(new SelectOption('fr_FR', 'French (France)'));
+        options.add(new SelectOption('de_DE', 'German (Germany)'));
+        options.add(new SelectOption('es_ES', 'Spanish (Spain)'));
+        options.add(new SelectOption('zh_CN', 'Chinese (China)'));
+        return options;
     }
 
-    private void populateProfileOptions() {
-        // Query all profiles
+    private static List<SelectOption> populateProfileOptions() {
+        List<SelectOption> options = new List<SelectOption>();
         for (Profile prof : [SELECT Id, Name FROM Profile]) {
-            profileOptions.add(new SelectOption(prof.Id, prof.Name));
+            options.add(new SelectOption(prof.Id, prof.Name));
         }
+        return options;
     }
 
-    private void populateRoleOptions() {
-        // Query all roles
+    private static List<SelectOption> populateRoleOptions() {
+        List<SelectOption> options = new List<SelectOption>();
         for (UserRole role : [SELECT Id, Name FROM UserRole]) {
-            roleOptions.add(new SelectOption(role.Id, role.Name));
+            options.add(new SelectOption(role.Id, role.Name));
         }
+        return options;
     }
 
-    private void setDefaultValues() {
-        User currentUser = [SELECT Alias, TimeZoneSidKey, LocaleSidKey, EmailEncodingKey, LanguageLocaleKey 
-                            FROM User WHERE Id = :UserInfo.getUserId()];
-        alias = currentUser.Alias != null ? currentUser.Alias : 'alias';
-        timeZone = currentUser.TimeZoneSidKey != null ? currentUser.TimeZoneSidKey : 'America/Los_Angeles';
-        locale = currentUser.LocaleSidKey != null ? currentUser.LocaleSidKey : 'en_US';
-        emailEncoding = currentUser.EmailEncodingKey != null ? currentUser.EmailEncodingKey : 'UTF-8';
-        language = currentUser.LanguageLocaleKey != null ? currentUser.LanguageLocaleKey : 'en_US';
+    private static List<SelectOption> populateAccountOptions() {
+        List<SelectOption> options = new List<SelectOption>();
+        for (Account acc : [SELECT Id, Name FROM Account]) {
+            options.add(new SelectOption(acc.Id, acc.Name));
+        }
+        return options;
     }
 
-    public void createUserAndAssignAccount() {
+    @AuraEnabled
+    public static Map<String, Object> createUserAndAssignAccount(String username, String email, String firstName, String lastName, String password, String alias, String timeZone, String locale, String emailEncoding, String language, String selectedProfileId, String selectedRoleId, List<String> selectedAccountIds) {
+        Map<String, Object> response = new Map<String, Object>();
         try {
+            User newUser = new User();
             newUser.Username = username;
             newUser.Email = email;
             newUser.FirstName = firstName;
@@ -122,50 +93,24 @@ public class CreateUserAndAssignAccountController {
             newUser.UserRoleId = selectedRoleId;
             insert newUser;
 
-            // Collect selected accounts
-            List<Id> selectedAccountIds = new List<Id>();
-            for (AccountWrapper accWrapper : accountOptions) {
-                if (accWrapper.selected) {
-                    selectedAccountIds.add(accWrapper.account.Id);
-                }
+            // Grant access to selected accounts
+            List<AccountShare> shares = new List<AccountShare>();
+            for (String accountId : selectedAccountIds) {
+                AccountShare share = new AccountShare();
+                share.UserOrGroupId = newUser.Id;
+                share.AccountId = accountId;
+                share.AccountAccessLevel = 'Read';
+                share.OpportunityAccessLevel = 'None';
+                shares.add(share);
             }
+            insert shares;
 
-            // Use future method to grant access to the selected Account records
-            if (selectedAccountIds != null && !selectedAccountIds.isEmpty()) {
-                CreateUserAndAssignAccountController.addAccountShares(newUser.Id, selectedAccountIds);
-            }
-
-            // Add success message
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.CONFIRM, 'User created successfully and accounts assigned.'));
+            response.put('success', true);
+            response.put('message', 'User created successfully and accounts assigned.');
         } catch (Exception e) {
-            // Add error message
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Error creating user: ' + e.getMessage()));
+            response.put('success', false);
+            response.put('message', 'Error creating user: ' + e.getMessage());
         }
-    }
-
-    @future
-    public static void addAccountShares(Id userId, List<Id> accountIds) {
-        List<AccountShare> shares = new List<AccountShare>();
-        for (Id accountId : accountIds) {
-            AccountShare share = new AccountShare();
-            share.UserOrGroupId = userId;
-            share.AccountId = accountId;
-            share.AccountAccessLevel = 'Read'; // Adjust access level as needed
-            share.OpportunityAccessLevel = 'None'; // Adjust access level as needed
-            shares.add(share);
-        }
-        insert shares;
-        System.debug('Account Shares Inserted: ' + shares);
-    }
-
-    // Wrapper class to hold Account data and selected status
-    public class AccountWrapper {
-        public Account account { get; set; }
-        public Boolean selected { get; set; }
-        
-        public AccountWrapper(Account acc) {
-            this.account = acc;
-            this.selected = false;
-        }
+        return response;
     }
 }

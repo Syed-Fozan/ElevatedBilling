@@ -1,0 +1,40 @@
+<aura:component controller="AccountSharingController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="users" type="User[]" />
+    <aura:attribute name="accounts" type="List" />
+    <aura:attribute name="selectedUserId" type="Id" />
+    <aura:attribute name="shareIds" type="Id" />
+    <aura:attribute name="selectedAccountIds" type="List" default="[]" />
+    <aura:attribute name="notificationMessage" type="String" />
+    <aura:attribute name="disabledShareAccount" type="Boolean" default="true"/>
+    <aura:attribute name="disabledRemoveShareAccount" type="Boolean" default="true"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:notificationsLibrary aura:id="notificationsLib" />
+
+    <lightning:card title="Share Accounts" iconName="standard:account">
+        <div class="slds-p-around_medium">
+            <lightning:select label="Select User" value="{!v.selectedUserId}" onchange="{!c.handleUserChange}" class="slds-m-bottom_medium">
+                <option value="">-- None --</option>
+                <aura:iteration items="{!v.users}" var="user">
+                    <option value="{!user.Id}">{!user.Name}</option>
+                </aura:iteration>
+            </lightning:select>
+
+            <lightning:dualListbox 
+                name="accounts" 
+                label="Select Accounts" 
+                sourceLabel="Available" 
+                selectedLabel="Selected" 
+                keyField="id"
+                options="{!v.accounts}" 
+                value="{!v.selectedAccountIds}" 
+                onchange="{!c.handleAccountSelection}" />
+
+            <div class="slds-m-top_medium">
+                <lightning:button label="Share Dental Office" variant="brand" disabled="{!v.disabledShareAccount}" onclick="{!c.shareAccount}" />
+                <lightning:button label="Remove Dental Office" variant="destructive" disabled="{!v.disabledRemoveShareAccount}" onclick="{!c.removeAccountSharing}" class="slds-m-left_small"/>
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>

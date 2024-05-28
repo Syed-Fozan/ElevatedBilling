@@ -1,0 +1,27 @@
+<aura:component controller="ManualAccountSharingController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="accounts" type="List" />
+    <aura:attribute name="selectedAccountId" type="String" />
+    <aura:attribute name="manualShares" type="List" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="draftValues" type="List" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:card title="Manual Account Sharing" iconName="standard:account">
+        <div class="slds-p-horizontal_medium slds-p-vertical_small">
+            <lightning:combobox name="accountDropdown" label="Select Account" 
+                                placeholder="Choose an account" 
+                                options="{!v.accounts}" 
+                                value="{!v.selectedAccountId}" 
+                                onchange="{!c.handleAccountChange}"
+                                class="slds-m-bottom_medium"/>
+            <lightning:datatable data="{!v.manualShares}" 
+                                 columns="{!v.columns}" 
+                                 keyField="id"
+                                 hideCheckboxColumn="true"
+                                 onrowaction="{!c.handleRowAction}"
+                                 draftValues="{!v.draftValues}"
+                                 class="slds-m-bottom_medium"/>
+        </div>
+    </lightning:card>
+</aura:component>
