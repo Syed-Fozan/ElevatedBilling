@@ -1,9 +1,12 @@
 <aura:component controller="AccountSharingController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
     <aura:attribute name="users" type="User[]" />
     <aura:attribute name="accounts" type="List" />
+    <aura:attribute name="removeAccountIds" type="List" />
     <aura:attribute name="selectedUserId" type="Id" />
     <aura:attribute name="shareIds" type="Id" />
     <aura:attribute name="selectedAccountIds" type="List" default="[]" />
+    <aura:attribute name="selectedAccountIdsRemove" type="List" default="[]" />
+
     <aura:attribute name="notificationMessage" type="String" />
     <aura:attribute name="disabledShareAccount" type="Boolean" default="true"/>
     <aura:attribute name="disabledRemoveShareAccount" type="Boolean" default="true"/>
@@ -11,6 +14,12 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
     <lightning:notificationsLibrary aura:id="notificationsLib" />
+
+    <aura:html tag="style">
+        .custom-filter {
+            width: 250px; /* Set a specific width or use percentage */
+        }
+    </aura:html>
 
     <lightning:card title="Share Accounts" iconName="standard:account">
         <div class="slds-p-around_medium">
@@ -20,6 +29,7 @@
                     <option value="{!user.Id}">{!user.Name}</option>
                 </aura:iteration>
             </lightning:select>
+            <lightning:input class="custom-filter " type="text" name="filterAccounts" label="Filter Accounts" onchange="{!c.filterAccounts}" placeholder="Type to filter..."  />
 
             <lightning:dualListbox 
                 name="accounts" 
@@ -31,8 +41,21 @@
                 value="{!v.selectedAccountIds}" 
                 onchange="{!c.handleAccountSelection}" />
 
+            <lightning:button label="Share Dental Office" variant="brand" disabled="{!v.disabledShareAccount}" onclick="{!c.shareAccount}" />
+
+            <lightning:input  class="custom-filter" type="text" name="filterRemoveAccounts" label="Filter Accounts to Remove" onchange="{!c.filterRemoveAccounts}" placeholder="Type to filter..."/>
+
+            <lightning:dualListbox 
+                name="removeAccounts" 
+                label="Select Accounts to Remove" 
+                sourceLabel="Available" 
+                selectedLabel="Selected for Removing" 
+                keyField="id"
+                options="{!v.removeAccountIds}" 
+                value="{!v.selectedAccountIdsRemove}" 
+                onchange="{!c.handleAccountSelection}" />
+
             <div class="slds-m-top_medium">
-                <lightning:button label="Share Dental Office" variant="brand" disabled="{!v.disabledShareAccount}" onclick="{!c.shareAccount}" />
                 <lightning:button label="Remove Dental Office" variant="destructive" disabled="{!v.disabledRemoveShareAccount}" onclick="{!c.removeAccountSharing}" class="slds-m-left_small"/>
             </div>
         </div>

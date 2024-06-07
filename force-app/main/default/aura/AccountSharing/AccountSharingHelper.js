@@ -28,15 +28,22 @@
                         label: account.Name,
                         value: account.Id
                     };
+                   
+                });
+                var removeAccountIds = result.removeAccount.map(function(account) {
+                    return {
+                        label: account.Name,
+                        value: account.Id
+                    };
                 });
                 var selectedAccountIds = result.sharedAccountIds;
                 var selectedShareId = result.shareIds;
 
                 component.set("v.accounts", accounts);
                 component.set("v.selectedAccountIds", selectedAccountIds);
-                component.set("v.shareIds", selectedShareId);
+                component.set("v.removeAccountIds",removeAccountIds);
 
-                component.set('v.disabledRemoveShareAccount', selectedAccountIds.length === 0);
+                component.set("v.shareIds", selectedShareId);
             } else {
                 console.error('Error fetching accounts:', response.getError());
             }
