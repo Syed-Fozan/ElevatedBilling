@@ -18,7 +18,7 @@ public class AestheticImplantDentistryController {
                                                      Can_be_done_same_day_as_TX__c,Sealants__c,Sealants_Freq__c,Sealants_To_Age__c,Preventative__c,Perio_Maint_D4910__c, 
                                                      Child_Prophylaxis__c,Ref_Number__c,Plan_downgrade_Crowns__c,Plan_downgrade_Crowns_Freq__c,Payment_sent_to_Office_or_Subscriber__c, 
                                                      Child_Prophylaxis_Freq__c,EBS__c,Class_II_Basic__c,Crowns_Inlays_Onlays_LabialVeneers_Freq__c,Perio_Maint_D4910_Freq__c,
-                                                     Child_Prophylaxis_Freq_To_Age__c,Composite_Filling_Freq__c,Crowns_Inlays_Onlays_Labial_Veneers__c, 
+                                                     Child_Prophylaxis_Freq_To_Age__c,Composite_Filling_Freq__c,Crowns_Inlays_Onlays_Labial_Veneers__c,Notes__c, 
                                                      Composite_Fillings_D2391__c,Date_of_last_Exam__c,Pays_On_Prep_Seat_Date__c,Insurance_company__c,
                                                      D0140_shared_w_oral_exam__c,Date_of_last_BWX__c,Are_all_four_quads_allowed_in_one_day__c,Limitations__c, 
                                                      D0140_shared_w_oral_exam_Freq__c,Up_To_Age__c,Periodontal_Maintenance_Freq__c,Periodontal_Maintenance__c,

@@ -2,9 +2,7 @@
     <table style="font-family:sans-serif;font-weight: bold">
         <tr>
             <td><apex:image id="logo2" value="{!$Resource.logo2}" width="60" height="60"/></td>
-            <td style="text-align: center; font-size: 20px; font-weight: bold;margin-right:-100px;">Insurance Eligibility Form</td>
-						<td></td>
-
+            <td style="text-align: center; font-size: 20px; font-weight: bold;margin-right:-100px;">Insurance Eligibility</td>
 
         </tr>
 				<div style="text-align: center;">
@@ -60,14 +58,6 @@
             <td style="white-space: nowrap;">Preventative :<span style="text-decoration: underline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputField value="{!insuranceVerification.Preventative__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basic :<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Basic__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Major :<span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Major__c}"/></span></td>
         </tr>
 				<br/>
-
-        <tr>
-            <td style="white-space: nowrap;">
-                Orthodontics: <span style="text-decoration: underline;">&nbsp;<apex:outputField value="{!insuranceVerification.Orthodontics__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Max/Remaining: <span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Max_Remaining__c}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Age Limit: <span style="text-decoration: underline;"><apex:outputField value="{!insuranceVerification.Age_Limit__c}"/></span>
-            </td>        
-        </tr>
 			</div>
         <br/>
         <tr>
@@ -117,6 +107,9 @@
         
         <tr>
             <td style="font-weight: bold;color:#000000;padding-left:5px; padding-right:10px;">Notes:</td>    
+            <tr>
+                <td><apex:outputField value="{!insuranceVerification.Notes__c}"/></td>
+            </tr>
         </tr>
         <br/>
         
