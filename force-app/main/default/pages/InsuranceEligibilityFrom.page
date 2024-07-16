@@ -8,7 +8,7 @@
     </table>
     <div style="width: 100%; text-align: center;">
         <div style="display: inline-block;">
-            <table style="font-weight: bold;  font-size: 14px; width: 100%; border: solid 0.5px #000; border-top: none; font-family: sans-serif; background-color: #988a8a; color: #fff;">
+            <table style="font-weight: bold;  font-size: 14px; width: 100%; border: solid 0.5px #000; border-top: none; font-family: Arial, sans-serif; background-color: #988a8a; color: ##988a8a;">
                 <tr>
                     <td>Date #</td>
                     <td style="border-bottom: 2px solid black; width: 16%;">
@@ -24,7 +24,7 @@
                     </td>
                 </tr>
             </table>
-            <table style="font-weight: bold;  font-size: 12px; width: 100%;border: solid 0.5px #000; border-top: none; font-family: sans-serif; background-color: #988a8a; color: #fff;">
+            <table style="font-weight: bold;  font-size: 12px; width: 100%;border: solid 0.5px #000; border-top: none; font-family: Arial, sans-serif; background-color: #988a8a; color: ##988a8a;">
                 <tr>
                     <td>Rep Name:</td>
                     <td style="border-bottom: 2px solid black; width: 49%; ">
@@ -70,6 +70,7 @@
                 </td>
             </tr>
         </table>
+        <br/>
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>Insurance company:</td>
@@ -78,6 +79,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>Maximum:</td>
@@ -86,6 +89,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>Used to date:</td>
@@ -94,6 +99,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>Deductible:</td>
@@ -102,6 +109,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>Has deductible been met:</td>
@@ -110,6 +119,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>Preventative %:</td>
@@ -142,6 +153,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>Prophy:</td>
@@ -150,6 +163,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>BWX:</td>
@@ -158,6 +173,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>FMX:</td>
@@ -166,6 +183,8 @@
                 </td>
             </tr>
         </table>
+        <br/>
+
         <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>FL:</td>
@@ -174,6 +193,7 @@
                 </td>
             </tr>
         </table>
+        
     </table>
 
     <br/>
