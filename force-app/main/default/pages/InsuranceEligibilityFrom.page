@@ -1,188 +1,200 @@
 <apex:page controller="AestheticImplantDentistryController" renderAs="pdf">
-        <table>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 25%;"><apex:image id="logo2" value="{!$Resource.elevatepic}" width="100" height="60"/></td>
+            <td style="width: 50%; text-align: center; font-size: 38px; font-weight: bold;">Insurance Eligibility</td>
+            <td style="width: 25%;">&nbsp;</td>
+        </tr>
+    </table>
+    <div style="width: 100%; text-align: center;">
+        <div style="display: inline-block;">
+            <table style="font-weight: bold;  font-size: 14px; width: 100%; border: solid 0.5px #000; border-top: none; font-family: sans-serif; background-color: #988a8a; color: #fff;">
+                <tr>
+                    <td>Date #</td>
+                    <td style="border-bottom: 2px solid black; width: 16%;">
+                        <apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!insuranceVerification.Due_Date__c}" /></apex:outputText>
+                    </td>
+                    <td>Time #:</td>
+                    <td style="border-bottom: 2px solid black; width: 26%;">
+                        <apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText>
+                    </td>
+                    <td>EBS:</td>
+                    <td style="border-bottom: 2px solid black; width: 30%;">
+                        <apex:outputField value="{!insuranceVerification.Ref_Number__c}"/>
+                    </td>
+                </tr>
+            </table>
+            <table style="font-weight: bold;  font-size: 12px; width: 100%;border: solid 0.5px #000; border-top: none; font-family: sans-serif; background-color: #988a8a; color: #fff;">
+                <tr>
+                    <td>Rep Name:</td>
+                    <td style="border-bottom: 2px solid black; width: 49%; ">
+                        <apex:outputField value="{!insuranceVerification.Rep_Name__c}"/>
+                    </td>
+                    <td>Ref#:</td>
+                    <td style="border-bottom: 2px solid black; width: 30%; ">
+                        <apex:outputField value="{!insuranceVerification.Ref_Number__c}"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br/>
+
+    <div style="font-weight: bold; width: 100%;">
+        <table style="font-weight: bold; width: 100%;">
             <tr>
-                <td><apex:image id="logo2" value="{!$Resource.elevatepic}" width="100" height="60"/></td>
-                <td style="text-align: center; font-size: 38px; font-weight: bold;">  &nbsp;&nbsp;&nbsp;Insurance Eligibility</td>
+                <td>Patient Name</td>
+                <td style="border-bottom: 2px solid black; width: 40%; ">
+                    <apex:outputField value="{!insuranceVerification.Patient_Name__c}"/>
+                </td>
+                <td style="padding-left: 10px;">Patient ID #:</td>
+                <td style="border-bottom: 2px solid black; width: 30%; ">
+                    <apex:outputField value="{!insuranceVerification.Patient_ID__c}"/>
+                </td>
             </tr>
         </table>
-
-        <div style="text-align: center;">
-            <table style="border: solid 0.5px #000; border-top: none; font-family: sans-serif; background-color: #988a8a; color: #fff; width: 100%; margin: auto;">
-                <tr>
-                    <td>Date:<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!insuranceVerification.Due_Date__c}" /></apex:outputText>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time:<apex:outputText value="{0,date,HH:mm:ss}"><apex:param value="{!NOW()}" /></apex:outputText>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBS: <apex:outputField value="{!insuranceVerification.EBS__c}"/></td>
-                </tr>
-                <tr>
-                    <td>Rep Name: <apex:outputField value="{!insuranceVerification.Rep_Name__c}"/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ref#: <apex:outputField value="{!insuranceVerification.Ref_Number__c}"/></td>
-                </tr>
-            </table>
-        </div>
-        
         <br/>
-
-        <div style="font-weight: bold; width: 100%;">
-            <table>
-                <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>Patient Name</td>
-                    <td style="border-bottom: 2px solid black; width: 40%; ">
-                        <apex:outputField value="{!insuranceVerification.Patient_Name__c}"/>
-                    </td>
-                    <td style="padding-left: 10px;">Patient ID #:</td>
-                    <td style="border-bottom: 2px solid black; width: 30%; ">
-                        <apex:outputField value="{!insuranceVerification.Patient_ID__c}"/>
-                    </td>
-                </tr>
-            </table>
-            <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>Group Name #</td>
-                    <td style="border-bottom: 2px solid black; width: 20%;">
-                        <apex:outputField value="{!insuranceVerification.Group_Name__c}"/>
-                    </td>
-                    <td style="padding-left: 10px;">Group #:</td>
-                    <td style="border-bottom: 2px solid black; width: 20%;">
-                        <apex:outputField value="{!insuranceVerification.Group__c}"/>
-                    </td>
-                    <td style="padding-left: 10px;">Eff.Date:</td>
-                    <td style="border-bottom: 2px solid black; width: 20%;">
-                        <apex:outputField value="{!insuranceVerification.Eff_Date__c}"/>
-                    </td>
-                </tr>
-            </table>
-            <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>Insurance company:</td>
-                    <td style="border-bottom: 2px solid black; width: 79%;">
-                        <apex:outputField value="{!insuranceVerification.Insurance_company__c}"/>
-                    </td>
-                </tr>
-            </table>
-            <table style="font-weight: bold; width: 100%;">
-
-                <tr>
-                    <td>Maximum:</td>
-                    <td style="border-bottom: 2px solid black; width: 89%;">
-                        <apex:outputField value="{!insuranceVerification.Maximum__c}"/>
-                    </td>
-                </tr>
-                <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>Used to date:</td>
-                    <td style="border-bottom: 2px solid black; width: 86%;">
-                        <apex:outputField value="{!insuranceVerification.Used_to_date__c}"/>
-                    </td>
-                </tr>
-                </table>
-                <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>Deductible:</td>
-                    <td style="border-bottom: 2px solid black; width: 87%;">
-                        <apex:outputField value="{!insuranceVerification.Deductible__c}"/>
-                    </td>
-                </tr>
-                </table>
-                <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>Has deductible been met:</td>
-                    <td style="border-bottom: 2px solid black; width: 74%;">
-                        <apex:outputField value="{!insuranceVerification.Has_deductible_been_met__c}"/>
-                    </td>
-                </tr>
-                </table>
-
-               </table>
-               <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>Preventative %:</td>
-                    <td style="border-bottom: 2px solid black; width: 20%;">
-                        <apex:outputField value="{!insuranceVerification.Preventative__c}"/>
-                    </td>
-                    <td style="padding-left: 10px;">Basic %:</td>
-                    <td style="border-bottom: 2px solid black;width: 20%;">
-                        <apex:outputField value="{!insuranceVerification.Basic__c}"/>
-                    </td>
-                    <td style="padding-left: 10px;">Major %:</td>
-                    <td style="border-bottom: 2px solid black; width: 20%;">
-                        <apex:outputField value="{!insuranceVerification.Major__c}"/>
-                    </td>
-                </tr>
-               </table>
-            </table>
-        </div>
-        
-        <br/>
-
-        <table>
+        <table style="font-weight: bold; width: 100%;">
             <tr>
-                <td style="font-weight: bold; color:#4040FF;">Is patient eligible for</td>
+                <td>Group Name #</td>
+                <td style="border-bottom: 2px solid black; width: 20%;">
+                    <apex:outputField value="{!insuranceVerification.Group_Name__c}"/>
+                </td>
+                <td style="padding-left: 10px;">Group #:</td>
+                <td style="border-bottom: 2px solid black; width: 20%;">
+                    <apex:outputField value="{!insuranceVerification.Group__c}"/>
+                </td>
+                <td style="padding-left: 10px;">Eff.Date:</td>
+                <td style="border-bottom: 2px solid black; width: 20%;">
+                    <apex:outputField value="{!insuranceVerification.Eff_Date__c}"/>
+                </td>
             </tr>
-            <table style="font-weight: bold; width: 100%;">
+        </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>Insurance company:</td>
+                <td style="border-bottom: 2px solid black; width: 79%;">
+                    <apex:outputField value="{!insuranceVerification.Insurance_company__c}"/>
+                </td>
+            </tr>
+        </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>Maximum:</td>
+                <td style="border-bottom: 2px solid black; width: 89%;">
+                    <apex:outputField value="{!insuranceVerification.Maximum__c}"/>
+                </td>
+            </tr>
+        </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>Used to date:</td>
+                <td style="border-bottom: 2px solid black; width: 86%;">
+                    <apex:outputField value="{!insuranceVerification.Used_to_date__c}"/>
+                </td>
+            </tr>
+        </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>Deductible:</td>
+                <td style="border-bottom: 2px solid black; width: 87%;">
+                    <apex:outputField value="{!insuranceVerification.Deductible__c}"/>
+                </td>
+            </tr>
+        </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>Has deductible been met:</td>
+                <td style="border-bottom: 2px solid black; width: 74%;">
+                    <apex:outputField value="{!insuranceVerification.Has_deductible_been_met__c}"/>
+                </td>
+            </tr>
+        </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>Preventative %:</td>
+                <td style="border-bottom: 2px solid black; width: 20%;">
+                    <apex:outputField value="{!insuranceVerification.Preventative__c}"/>
+                </td>
+                <td style="padding-left: 10px;">Basic %:</td>
+                <td style="border-bottom: 2px solid black;width: 20%;">
+                    <apex:outputField value="{!insuranceVerification.Basic__c}"/>
+                </td>
+                <td style="padding-left: 10px;">Major %:</td>
+                <td style="border-bottom: 2px solid black; width: 20%;">
+                    <apex:outputField value="{!insuranceVerification.Major__c}"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <br/>
+
+    <table>
+        <tr>
+            <td style="font-weight: bold; color:#4040FF;">Is patient eligible for</td>
+        </tr>
+        <table style="font-weight: bold; width: 100%;">
             <tr>
                 <td>Exam:</td>
                 <td style="border-bottom: 2px solid black; width: 95%;">
                     <apex:outputField value="{!insuranceVerification.Exam__c}"/>
                 </td>
             </tr>
-            </table>
-            <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>Prophy:</td>
-                    <td style="border-bottom: 2px solid black; width: 95%;">
-                        <apex:outputField value="{!insuranceVerification.Prophy__c}"/>
-                    </td>
-                </tr>
-            </table>
-
-            <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>BWX:</td>
-                    <td style="border-bottom: 2px solid black; width: 95%;">
-                        <apex:outputField value="{!insuranceVerification.BWX__c}"/>
-                    </td>
-                </tr>
-            </table>
-
-            <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>FMX:</td>
-                    <td style="border-bottom: 2px solid black; width: 95%;">
-                        <apex:outputField value="{!insuranceVerification.FMX__c}"/>
-                    </td>
-                </tr>
-            </table>
-
-            <table style="font-weight: bold; width: 100%;">
-                <tr>
-                    <td>FL:</td>
-                    <td style="border-bottom: 2px solid black; width: 95%;">
-                        <apex:outputField value="{!insuranceVerification.FL__c}"/>
-                    </td>
-                </tr>
-            </table>
         </table>
-        
-        <br/>
-        
-        <table>
+        <table style="font-weight: bold; width: 100%;">
             <tr>
-                <td style="font-weight: bold; color:#000000;">Notes:</td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="border-bottom">
-                        <apex:outputField value="{!insuranceVerification.Notes__c}"/>
-                    </span>
+                <td>Prophy:</td>
+                <td style="border-bottom: 2px solid black; width: 95%;">
+                    <apex:outputField value="{!insuranceVerification.Prophy__c}"/>
                 </td>
             </tr>
         </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>BWX:</td>
+                <td style="border-bottom: 2px solid black; width: 95%;">
+                    <apex:outputField value="{!insuranceVerification.BWX__c}"/>
+                </td>
+            </tr>
+        </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>FMX:</td>
+                <td style="border-bottom: 2px solid black; width: 95%;">
+                    <apex:outputField value="{!insuranceVerification.FMX__c}"/>
+                </td>
+            </tr>
+        </table>
+        <table style="font-weight: bold; width: 100%;">
+            <tr>
+                <td>FL:</td>
+                <td style="border-bottom: 2px solid black; width: 95%;">
+                    <apex:outputField value="{!insuranceVerification.FL__c}"/>
+                </td>
+            </tr>
+        </table>
+    </table>
 
-        <br/>
-        
-        <footer style="width: 100%; background-color: white; position: fixed; bottom: 0; clear: both; font-size: 8px;">
-            <span style="font-weight: bold;">Disclaimer: </span>
-            This is a summary of plan benefits and is not intended to be a contract. Actual coverage will be determined when the claim is processed subject to all contract terms, including, but not limited to, member benefits, benefit maximums, and subscription charge payment covering the actual dates of service. This is not a dental pre-determination of benefits or a guarantee of payment.
-        </footer>  
+    <br/>
+
+    <table>
+        <tr>
+            <td style="font-weight: bold; color:#000000;">Notes:</td>
+        </tr>
+        <tr>
+            <td>
+                <span class="border-bottom">
+                    <apex:outputField value="{!insuranceVerification.Notes__c}"/>
+                </span>
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+
+    <footer style="width: 100%; background-color: white; position: fixed; bottom: 0; clear: both; font-size: 8px;">
+        <span style="font-weight: bold;">Disclaimer: </span>
+        This is a summary of plan benefits and is not intended to be a contract. Actual coverage will be determined when the claim is processed subject to all contract terms, including, but not limited to, member benefits, benefit maximums, and subscription charge payment covering the actual dates of service. This is not a dental pre-determination of benefits or a guarantee of payment.
+    </footer>  
 </apex:page>
