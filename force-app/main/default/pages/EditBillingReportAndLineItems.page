@@ -1,0 +1,75 @@
+<apex:page standardController="Billing_Report__c" extensions="EditBillingReportAndLineItemsController">
+    <table style="font-family:sans-serif; font-weight: bold; width: 100%;">
+        <tr>
+            <td>
+                <apex:image id="logo2" value="{!$Resource.logo2}" width="60" height="60"/>
+            </td>
+            <td style="text-align: center; font-size: 30px; font-weight: bold; padding-left:40px;">
+                Weekly Accountability Report - Billing
+            </td>
+            <td></td>
+        </tr>
+    </table>
+    <apex:form style="font-size: 15px; border:block" >
+        <apex:pageBlock title="Weekly Accountability Report - Billing">
+            <!-- Performance Section -->
+            <apex:pageBlockSection title="Performance" columns="2">
+                <apex:inputField value="{!billingReport.All_claims_submitted_in_one_business_day__c}"/>
+                <apex:inputField value="{!billingReport.All_payments_posted_in_two_business_days__c}"/>
+                <apex:inputField value="{!billingReport.Pending_claims_log_addressed__c}"/>
+                <apex:inputField value="{!billingReport.Number_of_open_appeals__c}"/>
+                <apex:inputField value="{!billingReport.Number_of_appeals_managed__c}"/>
+                <apex:inputField label ="Number of claims still requiring VBS assistance:" value="{!billingReport.Number_of_claims_still_requiring_VBS_ass__c}"/>
+                <apex:inputField label ="Number of OCR claims touched,including notes in software:" value="{!billingReport.Number_of_OCR_claims_touched_including__c}"/>
+                <!-- Add more fields as necessary -->
+            </apex:pageBlockSection>
+
+            <!-- Transparency Section -->
+            <apex:pageBlockSection title="Transparency" columns="2">
+                <apex:inputField  label ="100% audit of NOS claim submission:" value="{!billingReport.X100_audit_of_NOS_claim_submission_Y_N__c}"/>
+                <apex:inputField label ="100% audit of NOS payment posting: " value="{!billingReport.X100_audit_of_NOS_payment_posting_Y_N__c}"/>
+
+                <!-- Add more fields as necessary -->
+            </apex:pageBlockSection>
+
+                        <!-- Line Items Section -->
+                        <apex:pageBlockSection id="lineItemsSection" title="Communication" columns="1">
+                            <apex:inputField value="{!billingReport.All_client_questions_addressed__c}"/>
+                            <table>
+                                <tr>
+                            <td style="padding-left:240px;">Monthly meeting agenda, client meeting, and recap completed (list all meetings completed for week) </td>
+                        </tr>
+                        </table>
+                            <apex:repeat value="{!lineItems}" var="lineItem">
+                                <apex:inputField label = 'ClientName ' value="{!lineItem.Name}"/>
+                                <apex:inputField value="{!lineItem.ClientDate__c}"/>
+                                <!-- Add more fields as necessary -->
+                               
+                            </apex:repeat>
+                            
+                            <!-- Button to add new line items -->
+                            <apex:commandButton value="Add Line Item" action="{!addLineItem}" reRender="lineItemsSection"/>
+                        </apex:pageBlockSection>
+            
+                        <apex:pageBlockSection title="Challenges and Successes" columns="1">
+                            <apex:inputField value="{!billingReport.Challenges__c}" styleClass="custom-input"/>
+                            <apex:inputField value="{!billingReport.Successes__c}" styleClass="custom-input"/>
+                            <apex:inputField value="{!billingReport.Requests_for_Support__c}" styleClass="custom-input"/>
+                            <!-- Add more fields as necessary -->
+                        </apex:pageBlockSection>
+                        <style>
+                            .custom-input {
+                                width: 600px;
+                                height: 70px;
+                            }
+                        </style>
+
+            <!-- Save and Cancel Buttons Section -->
+            <apex:pageBlockSection title="Actions" columns="2">
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

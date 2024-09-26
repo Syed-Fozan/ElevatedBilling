@@ -1,0 +1,10 @@
+<aura:component controller="BillingReportFormData" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <!-- Attribute to store the record Id -->
+    <aura:attribute name="recordId" type="String"/>
+    <lightning:card >
+    <div class="slds-col slds-no-flex slds-grid slds-align-top slds-shrink slds-p-horizontal_small">
+    <lightning:button class="slds-p-horizontal_small" label="  Send Email" onclick="{!c.generatePDFs}"/>
+    </div>
+    </lightning:card>
+
+</aura:component>
