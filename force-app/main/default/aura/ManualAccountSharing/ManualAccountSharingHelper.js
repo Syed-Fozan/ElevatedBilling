@@ -64,7 +64,6 @@
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-                // Update the manualShares list without reloading the page
                 var manualShares = component.get("v.manualShares");
                 var updatedManualShares = manualShares.filter(function(share) {
                     return share.id !== shareId;
