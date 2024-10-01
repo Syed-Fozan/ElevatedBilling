@@ -65,10 +65,15 @@
     <tr>
         <td style="padding-left:5px;"><span style="font-weight: bold;">Monthly meeting agenda, client meeting, and recap completed (list all meetings completed for week) : </span>&nbsp;<span style="text-decoration: underline;"></span></td>
     </tr>
-    <!-- <tr>
+    <tr>
         <td style=" padding-left:5px;"><span style="font-weight: bold;">Client/Date </span>&nbsp;<span ><apex:outputField value="{!BillingReport.Client1Name__c}"/></span>&nbsp;<span style="font-weight: bold;">&nbsp;</span><span ><apex:outputField value="{!BillingReport.Client1Date__c}"/></span></td>
 
-    </tr> -->
+    </tr>
+    <tr>
+        <td style=" padding-left:5px;"><span style="font-weight: bold;">Client/Date </span>&nbsp;<span ><apex:outputField value="{!BillingReport.Client2Name__c}"/></span>&nbsp;<span style="font-weight: bold;">&nbsp;</span><span ><apex:outputField value="{!BillingReport.Client1Date__c}"/></span></td>
+
+    </tr>
+
 
     <table style="font-family:sans-serif; font-size: 15px;">
         <apex:repeat value="{!BillingReport.Billing_ReportLineItems__r}" var="lineItem">
@@ -96,7 +101,7 @@
         </table>
 
         <br/>
-        <table style="font-family:sans-serif; font-size: 15px;">
+         <table style="font-family:sans-serif; font-size: 15px;">
             <tr style="color:#4040FF;">
                 <th style="padding-left:5px; padding-right:600px;padding-bottom:4px">Successes: &nbsp;</th>
             </tr>
@@ -116,154 +121,5 @@
 <br/>
 
 
-    <!-- <div style="font-weight: bold; width: 100%;">
-        
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>All claims submitted in one business day:</td>
-                <td style="border-bottom: 2px solid black; width: 57%;">
-                <apex:outputField value="{!BillingReport.All_claims_submitted_in_one_business_day__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>All payments posted in two business days:</td>
-                <td style="border-bottom: 2px solid black; width: 57%;">
-                <apex:outputField value="{!BillingReport.All_payments_posted_in_two_business_days__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-    
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>Pending claims log addressed:</td>
-                <td style="border-bottom: 2px solid black; width: 70%;">
-                <apex:outputField value="{!BillingReport.Pending_claims_log_addressed__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>Number of appeals managed:</td>
-                <td style="border-bottom: 2px solid black; width: 70%;">
-                <apex:outputField value="{!BillingReport.Number_of_appeals_managed__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>Number of open appeals:</td>
-                <td style="border-bottom: 2px solid black; width: 72%;">
-                <apex:outputField value="{!BillingReport.Number_of_open_appeals__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>Number of OCR claims touched, including notes in software:</td>
-                <td style="border-bottom: 2px solid black; width: 40%;">
-                <apex:outputField value="{!BillingReport.Number_of_OCR_claims_touched_including__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>Number of claims still requiring VBS assistance:</td>
-                <td style="border-bottom: 2px solid black; width: 49%;">
-                <apex:outputField value="{!BillingReport.Number_of_claims_still_requiring_VBS_ass__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>100% audit of NOS claim submission:</td>
-                <td style="border-bottom: 2px solid black; width: 62%;">
-                <apex:outputField value="{!BillingReport.X100_audit_of_NOS_claim_submission_Y_N__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>100% audit of NOS payment posting::</td>
-                <td style="border-bottom: 2px solid black; width: 62%;">
-                <apex:outputField value="{!BillingReport.X100_audit_of_NOS_claim_submission_Y_N__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>All client questions addressed:</td>
-                <td style="border-bottom: 2px solid black; width: 69%;">
-                <apex:outputField value="{!BillingReport.All_client_questions_addressed__c}"/>
-            </td>
-            </tr>
-        </table>
-<br/>
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>Challenges:</td>
-                <td style="border-bottom: 2px solid black; width: 87%;">
-                <apex:outputField value="{!BillingReport.Challenges__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>Successes:</td>
-                <td style="border-bottom: 2px solid black; width: 87%;">
-                <apex:outputField value="{!BillingReport.Successes__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-        
-        <table style="font-weight: bold; width: 100%;">
-            <tr>
-                <td>Requests for Support:</td>
-                <td style="border-bottom: 2px solid black; width: 75%;">
-                <apex:outputField value="{!BillingReport.Requests_for_Support__c}"/>
-            </td>
-            </tr>
-        </table>
-
-        <br/>
-
-
-    </div> -->
+   
 </apex:page>

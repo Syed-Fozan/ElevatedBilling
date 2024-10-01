@@ -1,4 +1,4 @@
-<apex:page standardController="Billing_Report__c" extensions="EditBillingReportAndLineItemsController">
+<apex:page standardController="Billing_Report__c" extensions="EditBillingReportController">
     <table style="font-family:sans-serif; font-weight: bold; width: 100%;">
         <tr>
             <td>
@@ -40,20 +40,25 @@
                             <td style="padding-left:240px;">Monthly meeting agenda, client meeting, and recap completed (list all meetings completed for week) </td>
                         </tr>
                         </table>
+                        <apex:inputField label  = 'Client Name ' value="{!billingReport.Client1Name__c}"/>
+                        <apex:inputField label  = 'Client Date '  value="{!billingReport.Client1Date__c}"/>
+                        <apex:inputField label  = 'Client Name '  value="{!billingReport.Client2Name__c}"/>
+                        <apex:inputField label  = 'Client Date '   value="{!billingReport.Client2Date__c}"/>
+
                             <apex:repeat value="{!lineItems}" var="lineItem">
-                                <apex:inputField label = 'ClientName ' value="{!lineItem.Name}"/>
-                                <apex:inputField value="{!lineItem.ClientDate__c}"/>
+                                <apex:inputField  label  = 'Client Name ' value="{!lineItem.Name}"/>
+                                <apex:inputField  label = 'Client Date ' value="{!lineItem.ClientDate__c}"/>
                                 <!-- Add more fields as necessary -->
                                
                             </apex:repeat>
                             
                             <!-- Button to add new line items -->
-                            <apex:commandButton value="Add Line Item" action="{!addLineItem}" reRender="lineItemsSection"/>
+                            <apex:commandButton value="Add More Clients" action="{!addLineItem}" reRender="lineItemsSection"/>
                         </apex:pageBlockSection>
             
                         <apex:pageBlockSection title="Challenges and Successes" columns="1">
                             <apex:inputField value="{!billingReport.Challenges__c}" styleClass="custom-input"/>
-                            <apex:inputField value="{!billingReport.Successes__c}" styleClass="custom-input"/>
+                            <apex:inputField value="{!billingReport.Successes__c}" styleClass="custom-input"/> 
                             <apex:inputField value="{!billingReport.Requests_for_Support__c}" styleClass="custom-input"/>
                             <!-- Add more fields as necessary -->
                         </apex:pageBlockSection>

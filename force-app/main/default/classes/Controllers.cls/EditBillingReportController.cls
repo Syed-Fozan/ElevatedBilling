@@ -1,11 +1,11 @@
-public class EditBillingReportAndLineItemsController {
+public class EditBillingReportController {
     public Billing_Report__c billingReport { get; set; }
     public List<Billing_ReportLineItem__c> lineItems { get; set; }
     
-    public EditBillingReportAndLineItemsController(ApexPages.StandardController stdController) {
+    public EditBillingReportController(ApexPages.StandardController stdController) {
         Id billingReportId = stdController.getId();
         
-        billingReport = [SELECT Id, Name,All_claims_submitted_in_one_business_day__c,All_payments_posted_in_two_business_days__c,Pending_claims_log_addressed__c,Number_of_open_appeals__c,All_client_questions_addressed__c,
+        billingReport = [SELECT Id, Name,All_claims_submitted_in_one_business_day__c,All_payments_posted_in_two_business_days__c,Pending_claims_log_addressed__c,Number_of_open_appeals__c,All_client_questions_addressed__c,Client2Name__c,Client1Name__c,Client2Date__c,Client1Date__c,
                          Number_of_appeals_managed__c,X100_audit_of_NOS_payment_posting_Y_N__c,Number_of_claims_still_requiring_VBS_ass__c,Number_of_OCR_claims_touched_including__c,X100_audit_of_NOS_claim_submission_Y_N__c,Challenges__c,Successes__c,Requests_for_Support__c
                          FROM Billing_Report__c 
                          WHERE Id = :billingReportId];

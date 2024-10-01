@@ -13,7 +13,6 @@ public class AccountSharingController {
             sharedAccountIds.add(share.AccountId);
         }
         
-        // Now filter out these shared accounts from the allAccounts query
         List<Account> allAccounts = [SELECT Id, Name FROM Account WHERE Id NOT IN :sharedAccountIds ORDER BY Name];
         List<Account> removeAccount = [SELECT Id, Name FROM Account WHERE Id  IN :sharedAccountIds ORDER BY Name];
 
