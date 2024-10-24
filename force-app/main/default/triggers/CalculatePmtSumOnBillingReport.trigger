@@ -31,11 +31,6 @@ trigger CalculatePmtSumOnBillingReport on Billing_Report__c (after insert) {
           AND CreatedDate = LAST_N_DAYS:7
         GROUP BY Account__c
     ];
-
-
-
-
-
     List<AggregateResult> OpenAppeal = [
     SELECT Dental_Office__c, Count(ID) OpenAppeal 
     FROM Claim__c
@@ -135,10 +130,10 @@ trigger CalculatePmtSumOnBillingReport on Billing_Report__c (after insert) {
         if (combinedTotalCount > 0  || SumofTotalApeals > 0  ||  RequireVbsAssistance > 0  || combinedStatusNote > 0) {
             // Create a new instance for the update
             Billing_Report__c reportToUpdate = new Billing_Report__c();
-            reportToUpdate.Id = report.Id; // Set the ID of the report to update
-            reportToUpdate.Number_of_appeals_managed__c = String.valueOf(combinedTotalCount); // Update the field
-            reportToUpdate.Number_of_open_appeals__c	= String.valueOf(SumofTotalApeals); // Update the field
-            reportToUpdate.Number_of_claims_still_requiring_VBS_ass__c	= String.valueOf(RequireVbsAssistance); // Update the field
+            reportToUpdate.Id = report.Id; 
+            reportToUpdate.Number_of_appeals_managed__c = String.valueOf(combinedTotalCount); 
+            reportToUpdate.Number_of_open_appeals__c	= String.valueOf(SumofTotalApeals);
+            reportToUpdate.Number_of_claims_still_requiring_VBS_ass__c	= String.valueOf(RequireVbsAssistance); 
             reportToUpdate.Number_of_OCR_claims_touched_including__c = String.valueOf(combinedStatusNote);
             billingReportsToUpdate.add(reportToUpdate);
         }

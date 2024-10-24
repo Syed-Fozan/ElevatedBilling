@@ -1,16 +1,16 @@
 <apex:page controller="BillingReportFormData" renderAs="pdf">
-    <table style="font-family:sans-serif; font-weight: bold; width: 100%;">
+    <table style="font-family:sans-serif; color:black; width: 100%;">
         <tr>
             <td>
                 <apex:image id="logo2" value="{!$Resource.logo2}" width="60" height="60"/>
             </td>
             <td style="text-align: center; font-size: 30px; font-weight: bold; padding-left:40px;">
                 Weekly Accountability Report - Billing
+                <br/>
+                <apex:outputText value="{!BillingReport.Dental_Office__r.Name}" />
             </td>
-            <td></td>
         </tr>
     </table>
-
 
 
 
@@ -66,13 +66,13 @@
         <td style="padding-left:5px;"><span style="font-weight: bold;">Monthly meeting agenda, client meeting, and recap completed (list all meetings completed for week) : </span>&nbsp;<span style="text-decoration: underline;"></span></td>
     </tr>
     <tr>
-        <td style=" padding-left:5px;"><span style="font-weight: bold;">Client/Date </span>&nbsp;<span ><apex:outputField value="{!BillingReport.Client1Name__c}"/></span>&nbsp;<span style="font-weight: bold;">&nbsp;</span><span ><apex:outputField value="{!BillingReport.Client1Date__c}"/></span></td>
+        <td style=" padding-left:5px;"><span style="font-weight: bold;">Client/Date </span>&nbsp;<span ><apex:outputField value="{!BillingReport.Dental_Office__r.Name}"/></span>&nbsp;<span style="font-weight: bold;">&nbsp;</span><span ><apex:outputField value="{!BillingReport.Client1Date__c}"/></span></td>
 
     </tr>
-    <tr>
+    <!-- <tr>
         <td style=" padding-left:5px;"><span style="font-weight: bold;">Client/Date </span>&nbsp;<span ><apex:outputField value="{!BillingReport.Client2Name__c}"/></span>&nbsp;<span style="font-weight: bold;">&nbsp;</span><span ><apex:outputField value="{!BillingReport.Client1Date__c}"/></span></td>
 
-    </tr>
+    </tr> -->
 
 
     <table style="font-family:sans-serif; font-size: 15px;">

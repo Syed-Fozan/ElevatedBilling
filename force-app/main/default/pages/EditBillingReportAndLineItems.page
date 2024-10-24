@@ -40,7 +40,7 @@
                             <td style="padding-left:240px;">Monthly meeting agenda, client meeting, and recap completed (list all meetings completed for week) </td>
                         </tr>
                         </table>
-                        <apex:inputField label  = 'Client Name ' value="{!billingReport.Client1Name__c}"/>
+                        <apex:inputField label  = 'Client Name ' value="{!billingReport.Dental_Office__c}"/>
                         <apex:inputField label  = 'Client Date '  value="{!billingReport.Client1Date__c}"/>
                         <apex:inputField label  = 'Client Name '  value="{!billingReport.Client2Name__c}"/>
                         <apex:inputField label  = 'Client Date '   value="{!billingReport.Client2Date__c}"/>
@@ -70,10 +70,14 @@
                         </style>
 
             <!-- Save and Cancel Buttons Section -->
-            <apex:pageBlockSection title="Actions" columns="2">
-                <apex:commandButton value="Save" action="{!save}" />
-                <apex:commandButton value="Cancel" action="{!cancel}" />
+            <apex:pageBlockSection title="Actions" >
+                <apex:outputPanel layout="block" style="text-align:center;">
+                    <apex:commandButton value="Save" action="{!save}"  />
+                    <apex:commandButton value="Save and Send Email" action="{!SaveandSendEmail}"  />
+                    <apex:commandButton value="Cancel" action="{!cancel}"  />
+                </apex:outputPanel>
             </apex:pageBlockSection>
+            
 
         </apex:pageBlock>
     </apex:form>
