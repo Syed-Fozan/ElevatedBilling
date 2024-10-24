@@ -36,6 +36,7 @@ public with sharing class BillingReportFormData {
         return null;
     }
 
+    @AuraEnabled
     @future(callout=true)
     public static void sendEmailWithPDF(Id recordId) {
         try {
@@ -64,12 +65,6 @@ public with sharing class BillingReportFormData {
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
             System.debug('Email sent successfully to ' + toAddresses);
 
-
-
-            return 'Success';
-    
-
-            return 'Success';
         } catch (Exception e) {
             System.debug('Error: ' + e.getMessage());
         }
