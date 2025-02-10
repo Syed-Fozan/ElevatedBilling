@@ -33,7 +33,6 @@
 
             <lightning:dualListbox 
                 name="accounts" 
-                label="Select Accounts" 
                 sourceLabel="Available" 
                 selectedLabel="Selected" 
                 keyField="id"
@@ -47,7 +46,6 @@
 
             <lightning:dualListbox 
                 name="removeAccounts" 
-                label="Select Accounts to Remove" 
                 sourceLabel="Available" 
                 selectedLabel="Selected for Removing" 
                 keyField="id"

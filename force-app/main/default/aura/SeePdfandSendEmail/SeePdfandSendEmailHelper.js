@@ -9,13 +9,8 @@
             var state = response.getState();
             if (state === "SUCCESS") {
                 var result = response.getReturnValue();
-                if(result === 'Success') {
-                    this.showToastMessage('Email Sent Successfully ', 'Success');
-                } else {
-                    alert("Error: " + result);
-                }
-            } else {
-                alert("Failed with state: " + state);
+            this.showToastMessage('Email Sent Successfully ', 'Success');
+                
             }
         });
 

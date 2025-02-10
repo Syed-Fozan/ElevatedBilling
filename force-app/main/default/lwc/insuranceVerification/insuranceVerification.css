@@ -1,0 +1,68 @@
+.card {
+    background-color: #f0f4f8; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Set a max width for the card */
+    margin: auto; /* Center the card */
+}
+
+.form-section {
+    margin-bottom: 20px;
+    padding: 20px; /* Increased padding for better spacing */
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #ffffff; /* White background for sections */
+    transition: background-color 0.3s; 
+}
+
+.form-section:hover {
+    background-color: #e6eeff;  /*#e6eeff */
+}
+
+.section-title {
+    font-size: 1.25rem;
+    color: #0070d2; 
+    margin-bottom: 10px;
+    border-bottom: 2px solid #0070d2;
+    padding-bottom: 5px;
+    padding-left: 0;
+}
+
+.input-field {
+    margin-bottom: 15px;
+   /* width: 80%; */
+   
+}
+/*
+.btn-save {
+    background-color: #28a745; 
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #218838; 
+}
+
+.btn-cancel {
+    background-color: #ffcc00; 
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #e6b800; 
+}
+
+.btn-download {
+    background-color: #007bff; 
+    color: white;
+}
+
+.btn-download:hover {
+    background-color: #0056b3; 
+} */
+
+/* Additional styles for layout */
+.slds-grid {
+    margin-left: -1rem; /* Adjust grid margins */
+    margin-right: -1rem;
+}

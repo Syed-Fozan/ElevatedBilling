@@ -1,0 +1,45 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes" controller="ClaimStatusController" access="global">
+    <!-- Include Chart.js -->
+    <ltng:require scripts="{!$Resource.chartjs}" afterScriptsLoaded="{!c.scriptsLoaded}" />
+
+    <!-- Attributes -->
+    <aura:attribute name="cachedStatusRecords" type="Map" access="public" description="Stores cached records by status for quick lookup" />
+    <aura:attribute name="recordId" type="String" />
+
+    <aura:attribute name="isLoading" type="Boolean" default="false" />
+    <aura:attribute name="chartLabels" type="List" />
+    <aura:attribute name="chartData" type="List" />
+    <aura:attribute name="value" type="date" />
+
+    <aura:attribute name="chart" type="Object" />
+    <aura:attribute name="selectedStatusRecords" type="List" />
+    <aura:attribute name="columns" type="List" default="[
+        {label: 'Claim ID', fieldName: 'Id'},
+        {label: 'Name', fieldName: 'Name'},
+        {label: 'Status', fieldName: 'Status__c'},
+        {label: 'Amount', fieldName: 'Claim_Amount__c'}
+    ]" />
+    <aura:attribute name="showDatatable" type="Boolean" default="false" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:card title="Claim Status Distribution">
+    <lightning:input type="date" aura:id="dateInput" name="input2" label="Date field with a predefined value" value="2020-09-07" onchange="{!c.getDateValue}"/>
+
+
+        <div class="slds-p-around_medium">
+            <canvas aura:id="chartCanvas" style="width: 600px; height: 400px;"></canvas>
+        </div>
+        <aura:if isTrue="{!v.isLoading}">
+    <lightning:spinner size="medium" alternativeText="Loading..." />
+</aura:if>
+        <aura:if isTrue="{!v.showDatatable}">
+            <lightning:datatable
+                data="{!v.selectedStatusRecords}"
+                columns="{!v.columns}"
+                keyField="Id"
+                class="slds-m-top_medium"
+            />
+        </aura:if>
+    </lightning:card>
+</aura:component>

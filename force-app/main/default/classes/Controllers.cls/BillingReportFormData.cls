@@ -41,7 +41,7 @@ public with sharing class BillingReportFormData {
     public static void sendEmailWithPDF(Id recordId) {
         try {
             // Re-query the updated record to ensure data is current
-            Billing_Report__c record = [SELECT Id, Name, X100_audit_of_NOS_claim_submission_Y_N__c,Dental_Office__c, Successes__c, Challenges__c, Number_of_appeals_managed__c, Client2Name__c, Client1Name__c, Client2Date__c, Client1Date__c, X100_audit_of_NOS_payment_posting_Y_N__c 
+            Billing_Report__c record = [SELECT Id, Name, X100_audit_of_NOS_claim_submission_Y_N__c,Dental_Office__r.Name ,Dental_Office__c, Successes__c, Challenges__c, Number_of_appeals_managed__c, Client2Name__c, Client1Name__c, Client2Date__c, Client1Date__c, X100_audit_of_NOS_payment_posting_Y_N__c 
                                         FROM Billing_Report__c 
                                         WHERE Id = :recordId LIMIT 1];
     
@@ -50,13 +50,13 @@ public with sharing class BillingReportFormData {
             Blob pdfBlob = pdfPage.getContentAsPDF();
     
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            String[] toAddresses = new String[] {'compliance@elevatebillingsolutions.com'}; 
+            String[] toAddresses = new String[] {'compliance@elevatebillingsolutions.com', 'JohnC@elevatebillingsolutions.com','JasonR@elevatebillingsolutions.com'}; 
             mail.setToAddresses(toAddresses);
-            mail.setSubject('Weekly Accountability Report - Billing ' + record.Name);
+            mail.setSubject('Weekly Accountability Report - ' + record.Dental_Office__r.Name);
             mail.setPlainTextBody('Please find the attached PDF for the record.');
     
             Messaging.EmailFileAttachment attachment = new Messaging.EmailFileAttachment();
-            attachment.setFileName('Weekly Accountability Report - Billing.pdf');
+            attachment.setFileName('Weekly Accountability Report - ' + record.Dental_Office__r.Name +'.pdf');
             attachment.setBody(pdfBlob);
     
             mail.setFileAttachments(new Messaging.EmailFileAttachment[] { attachment });

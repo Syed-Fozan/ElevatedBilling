@@ -1,0 +1,16 @@
+<template>
+   <lightning-card>
+   <div class="slds-p-around_medium">
+       <canvas style="width: 600px; height: 600px;"></canvas>
+   </div>
+
+   <template if:true={showDatatable}>
+       <lightning-datatable
+           key-field="Id"
+           data={completedRecords}
+           columns={columns}
+           class="slds-m-top_medium"
+       ></lightning-datatable>
+   </template>
+</lightning-card>
+</template>

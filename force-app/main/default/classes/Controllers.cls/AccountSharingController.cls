@@ -7,12 +7,14 @@ public class AccountSharingController {
     public static Map<String, Object> getAccounts(Id userId) {
         Map<String, Object> result = new Map<String, Object>();
         
+        // Assuming you want to completely hide shared accounts
         List<AccountShare> accountShares = [SELECT AccountId FROM AccountShare WHERE UserOrGroupId = :userId];
         Set<Id> sharedAccountIds = new Set<Id>();
         for (AccountShare share : accountShares) {
             sharedAccountIds.add(share.AccountId);
         }
         
+        // Now filter out these shared accounts from the allAccounts query
         List<Account> allAccounts = [SELECT Id, Name FROM Account WHERE Id NOT IN :sharedAccountIds ORDER BY Name];
         List<Account> removeAccount = [SELECT Id, Name FROM Account WHERE Id  IN :sharedAccountIds ORDER BY Name];
 

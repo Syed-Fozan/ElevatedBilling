@@ -1,0 +1,481 @@
+<template>
+    <lightning-card title="IV Form" icon-name="standard:insurance" class="card">
+        <div class="slds-p-around_medium">
+            <lightning-record-edit-form object-api-name="Insurance_Verification__c" onsuccess={handleSuccess}  onerror={handleError} record-id={recordId}>
+                <lightning-layout-item size="12" class="slds-p-around_xx-small">
+                    <h1 class="slds-text-heading_large slds-text-align_center" style="background-color: seagreen;color:white; font-weight:bold;">Insurance Verification Breakdown Form</h1>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" class="slds-p-around_xx-small">
+                    <h2 class="slds-text-heading_medium slds-text-align_center" style="background-color: lightcyan;font-weight:bold;">PATIENT/SUBSCRIBER INFORMATION</h2>
+                </lightning-layout-item>
+                <div class="form-section">
+
+                    <!----Insurance Information---->
+
+                    <h2 class="section-title">Insurance Information</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field  label="Name" field-name="Name" required class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ins_Address__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ins_Phone__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Payer_ID__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Insurance_Effective_Date__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Standard_COB__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Other_Method_COB__c" class="input-field"></lightning-input-field>
+                        </div>
+                        
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Is_plan_a_Cal_Year_or_Benefit_Year__c" class="input-field"></lightning-input-field>  
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="In_Network__c" class="input-field"></lightning-input-field>  
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Fee_Schedule__c" class="input-field"></lightning-input-field>  
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Are_there_Out_of_Network_Benefits__c" class="input-field"></lightning-input-field>  
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Payment_sent_to_Office_or_Subscriber__c" class="input-field"></lightning-input-field>  
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Plan_Type__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Waiting_Period__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Duration__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Limitations__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Date__c" class="input-field"></lightning-input-field>
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Time__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Rep_Name__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ref__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="EBS__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div>
+                            <p style="color:red">** PLEASE NOTE - For insurance plans that are out
+                                of network, insurance <br> pays up to their allowed
+                                amount, patient may be responsible for the <br> difference.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!----Subscriber Information---->
+
+                <div class="form-section">
+                    <h2 class="section-title">Subscriber Information</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Subscriber_Name__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Subscriber_DOB__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Subscriber_ID__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Plan_Group__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Employer_Group_Name__c" class="input-field"></lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+                
+                <!----Patient Information-->
+
+                <div class="form-section">
+                    <h2 class="section-title">Patient Information</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Patient_Name__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Patient_DOB__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Age__c" class="input-field"></lightning-input-field>
+                        </div>  
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Individual_Deductible__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Individual_Met_To_Date__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Family_Deductible__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Family_Met_To_Date__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Deductible_Applies_To__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Dental_Maximum__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Remaining__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Max_Applies_To_Diag_Prev__c" class="input-field"></lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+
+                          <!----DENTAL BENEFITS---->
+
+                        <lightning-layout-item size="12" class="slds-p-around_xx-small">
+                        <h2 class="slds-text-heading_medium slds-text-align_center" style="background-color: lightcyan;font-weight:bold;">DENTAL BENEFITS</h2>
+                        </lightning-layout-item>
+                
+                <!---Class I: Preventive ____%------>
+                <div class="form-section">
+                    <h2 class="section-title">Class I: Preventive ____%</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Routine_Oral_Exam_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Does_D0140_Share__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D0140__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D0140_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Routine_Prophylaxis_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D0180_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="BWX__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="BWX_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Shared_w_FMX__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Panoramic_FMX__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Panoramic_FMX_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="PA__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="PA_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Fluoride_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Fluoride_Freq_up_to_Age__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Sealants__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Sealants_up_to_age__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Sealants_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Criteria__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Curondont_D2991__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Curondont_D2991_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D2991_Criteria__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Oral_Photos_D0350__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Diag_Casts_D0470__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D0367__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D0367_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D0367_Criteria__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Shared_w_PANO__c" class="input-field"></lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+                 
+                <!------Class II: Basic ___%-->
+                <div class="form-section">
+                    <h2 class="section-title">Class II: Basic ___%</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Fillings_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Are_posterior_composites_downgraded__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ging_Inflamm_D4346__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D4346_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Perio_Maint_D4910__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D4910_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+
+                <!----Class III: Major _____%-->
+
+                <div class="form-section">
+                    <h2 class="section-title">Class III: Major _____%</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Pays_On_Prep_Seat_Date__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Crowns__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Crowns_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Plan_downgrade_Crowns_D2740__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Crown_Build_up_D2950__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Crown_Build_up_D2950_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Allowable_same_day_as_Crown__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Implant_Benefits_D6010_11__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Implant_Abutment_D6056_57__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D6056_57_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Implant_Crown_D6058_59__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D6058_59_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Surgical_Guide_D6190__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D6190_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="BG_w_o_ext_D6104__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="BG_w_ext_D7953__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Missing_Tooth_Clause__c" class="input-field"></lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+
+                <!------Allowable under Basic or Major:-->
+
+                <div class="form-section">
+                    <h2 class="section-title">Allowable under Basic or Major:</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Endodontic__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="SRP__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="SRP_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Are_all_four_quads_allowed_in_one_day__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Oss_Surgery_D4260__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Membrane_D4266__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Pinhole_D4270__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D4270_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Simple_Ext_D7140__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Surgical_Ext_D7210__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="NG_D9944__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D9944_Criteria__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D9944_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Palliative_D9110__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D9110_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Consult_D9310__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Shared_with_D0120_0150__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="D9310_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------Ortho: ____%-->
+
+                <div class="form-section">
+                    <h2 class="section-title">Ortho: ____%</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Auto_Pay__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Claim_Submit_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Payment_Freq__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Banding__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ortho_Lifetime_Max__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ortho_Max_Met__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ortho_Deductible__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ortho_Ded_Met__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Ortho_up_to_age__c" class="input-field"></lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+
+                <!----------Notes/History:-->
+
+                <div class="form-section">
+                    <h2 class="section-title">Notes/History:</h2>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Last_Exam__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Last_Prophy__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Last_BWX__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="SRP_Hx__c" class="input-field"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning-input-field field-name="Last_FMX_Pan__c" class="input-field"></lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <!------Action Buttons-->
+                    <form class="slds-p-around_medium slds-card" style="background-color:#e6eeff;">
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item size="6" class="slds-p-around_xx-small">
+                                <lightning-button type="submit" label="Save" variant="success" class="slds-float_right" ></lightning-button>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" class="slds-p-around_xx-small">
+                                <lightning-button label="Cancel" variant="destructive" onclick={handleCancel} class="" ></lightning-button>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12" class="slds-p-around_xx-small">
+                                <lightning-button label="Download Pdf" variant="Brand Outline" onclick={handleDownload} class="slds-align_absolute-center" ></lightning-button>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                     </form>
+
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+    
+</template>
