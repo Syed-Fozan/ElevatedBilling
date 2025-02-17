@@ -2,9 +2,9 @@ import { LightningElement, track, wire } from 'lwc';
 import FollowUpTask from '@salesforce/apex/FollowUpTask.FollowUpTask';
 
 const columns = [
-    { label: 'Owner Name', fieldName: 'name', type: 'text' },
+    { label: 'User Name', fieldName: 'name', type: 'text' },
     { label: 'Practice Name', fieldName: 'dentalOfficeName', type: 'text' },
-    { label: 'Total Assigned Tasks', fieldName: 'assignedTasks', type: 'number', cellAttributes: { alignment: 'left' } },
+    { label: 'Assigned Tasks', fieldName: 'assignedTasks', type: 'number', cellAttributes: { alignment: 'left' } },
     { label: 'Pending Task Count', fieldName: 'countOfClaims', type: 'number', cellAttributes: { alignment: 'left' }},
     { label: 'Pending Task Amount', fieldName: 'pendingTaskAmount', type: 'currency' ,cellAttributes: { alignment: 'left' }},
    {
@@ -48,16 +48,23 @@ export default class FollowupTaskComponent extends LightningElement {
     @track treeData;
     @track error;
     columns = columns;
+    @track expandedRows = []; // Add this property
 
     // Modal Data
     @track isModalOpen = false;
     @track modalData = [];
     @track modalColumns = [
-        { label: 'Claim Name', fieldName: 'claimName', type: 'text' },
-        { label: 'Owner Name', fieldName: 'ownerName', type: 'text' },
+        {
+            label: 'Claim Name',
+            fieldName: 'claimLink',
+            type: 'url',
+            typeAttributes: { label: { fieldName: 'claimName' }, target: '_blank' }
+        },        { label: 'User Name', fieldName: 'ownerName', type: 'text' },
         { label: 'Insurance Name', fieldName: 'insuranceName', type: 'text' },
         { label: 'Status', fieldName: 'status', type: 'text' },
         { label: 'Work Date ', fieldName: 'lastModifiedDate' },
+        { label: 'Due Date', fieldName: 'DueDate' },
+
         // { label: 'Assigned Tasks', fieldName: 'assignedTasks', type: 'number', cellAttributes: { alignment: 'left' } },
         { label: 'Comments ', fieldName: 'description' }
 
@@ -65,9 +72,12 @@ export default class FollowupTaskComponent extends LightningElement {
 
     @wire(FollowUpTask)
     wiredAccounts({ error, data }) {
+        debugger;
         if (data) {
             this.data = data;
             this.treeData = this.transformData(data);
+            this.expandedRows = this.treeData.map(row => row.Id); // Add this line
+
         } else if (error) {
             this.error = error;
         }
@@ -80,39 +90,45 @@ export default class FollowupTaskComponent extends LightningElement {
         office.claims.forEach(claim => {
             const ownerName = claim.ownerName;
             const dentalOfficeName = office.dentalOfficeName;
+            const pendingTaskAmount = office.pendingTaskAmount;
 
             if (!groupedData[ownerName]) {
                 groupedData[ownerName] = {
                     Id: ownerName,
                     name: ownerName,
-                    disableAction: true,  // Disable buttons for owner rows
-                    rowClass: "slds-hide",  // Hide button column
-                    _children: {}
+                    disableAction: true, 
+                    rowClass: "slds-hide",  
+                    _children: [],
+                    expanded: true  
                 };
             }
 
-            if (!groupedData[ownerName]._children[dentalOfficeName]) {
-                groupedData[ownerName]._children[dentalOfficeName] = {
+            let childRow = groupedData[ownerName]._children.find(child => child.dentalOfficeName === dentalOfficeName);
+            if (!childRow) {
+                childRow = {
                     Id: `${ownerName}-${dentalOfficeName}`,
                     ownerName: ownerName,
                     dentalOfficeName: dentalOfficeName,
                     assignedTasks: 0,
                     countOfClaims: 0,  
-                    pendingTaskAmount: 0,
+                    pendingTaskAmount: pendingTaskAmount,
                     claims: [],
                     pendingTasks: [],
-                    disableAction: false, // Enable buttons for detail rows
-                    rowClass: ""  // Keep visible for practice name rows
+                    disableAction: false, 
+                    rowClass: "",
+                    expanded: false
                 };
+                groupedData[ownerName]._children.push(childRow);
             }
 
-            groupedData[ownerName]._children[dentalOfficeName].assignedTasks += claim.assignedTasks;
-            groupedData[ownerName]._children[dentalOfficeName].claims.push(claim);
+            childRow.assignedTasks += 1; // Increment assigned tasks count
+            childRow.claims.push(claim);
         });
 
         office.pendingTasks.forEach(task => {
             const ownerName = task.ownerName;
             const dentalOfficeName = office.dentalOfficeName;
+            const pendingTaskAmount = office.pendingTaskAmount;
 
             if (!groupedData[ownerName]) {
                 groupedData[ownerName] = {
@@ -120,42 +136,42 @@ export default class FollowupTaskComponent extends LightningElement {
                     name: ownerName,
                     disableAction: true,
                     rowClass: "slds-hide",
-                    _children: {}
+                    _children: [],
+                    expanded: true  
                 };
             }
 
-            if (!groupedData[ownerName]._children[dentalOfficeName]) {
-                groupedData[ownerName]._children[dentalOfficeName] = {
+            let childRow = groupedData[ownerName]._children.find(child => child.dentalOfficeName === dentalOfficeName);
+            if (!childRow) {
+                childRow = {
                     Id: `${ownerName}-${dentalOfficeName}`,
                     ownerName: ownerName,
                     dentalOfficeName: dentalOfficeName,
                     assignedTasks: 0,
                     countOfClaims: 0,
-                    pendingTaskAmount: 0,
+                    pendingTaskAmount: pendingTaskAmount,
                     claims: [],
                     pendingTasks: [],
                     disableAction: false,
-                    rowClass: ""
+                    rowClass: "",
+                    expanded: false
                 };
+                groupedData[ownerName]._children.push(childRow);
             }
 
-            groupedData[ownerName]._children[dentalOfficeName].pendingTasks.push(task);
-        });
-
-        Object.values(groupedData).forEach(owner => {
-            Object.values(owner._children).forEach(child => {
-                child.countOfClaims = child.pendingTasks.length;
-            });
+            childRow.pendingTasks.push(task);
         });
     });
 
-    return Object.values(groupedData).map(owner => ({
-        Id: owner.Id,
-        name: owner.name,
-        disableAction: true,  // Owner row should not have buttons
-        rowClass: "slds-hide",  // Hide buttons for owners
-        _children: Object.values(owner._children)
-    }));
+    // Calculate countOfClaims and assignedTasks for each child row
+    Object.values(groupedData).forEach(owner => {
+        owner._children.forEach(child => {
+            child.countOfClaims = child.pendingTasks.length;
+            child.assignedTasks = child.claims.length; // Ensure assignedTasks is updated
+        });
+    });
+
+    return Object.values(groupedData);
 }
 
     // Handle button click action
@@ -172,7 +188,18 @@ export default class FollowupTaskComponent extends LightningElement {
 
     // Open modal and filter data based on button clicked
     openModal(rowData, type) {
-        this.modalData = type === 'claims' ? rowData.claims || [] : rowData.pendingTasks || [];
+        if (type === 'claims') {
+            this.modalData = rowData.claims.map(claim => ({
+                ...claim,
+                claimLink: `/lightning/r/Claim__c/${claim.claimId}/view`  
+            }));
+        } else if (type === 'pendingTasks') {
+            this.modalData = rowData.pendingTasks.map(task => ({
+                ...task,
+                claimLink: `/lightning/r/Claim__c/${task.claimId}/view`
+            }));
+        }
+    
         this.isModalOpen = true;
     }
 

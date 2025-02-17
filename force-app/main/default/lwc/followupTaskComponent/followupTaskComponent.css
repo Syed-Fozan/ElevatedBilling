@@ -1,3 +1,59 @@
 .custom-container{
 	color : black;
 }
+
+.custom-card {
+	background: linear-gradient(135deg, #0070d2, #005fb2);
+	color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	padding: 15px;
+}
+
+.custom-box {
+	background-color: #f4f6f9;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tree Grid Styling */
+.custom-tree-grid {
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: white;
+}
+
+/* Modal Styling */
+.custom-modal-header {
+	background: linear-gradient(135deg, #ff6b6b, #ff4757);
+	color: white;
+	text-align: center;
+	padding: 15px;
+}
+
+.custom-modal-footer {
+	background: linear-gradient(135deg, #1dd1a1, #10ac84);
+	text-align: center;
+	padding: 10px;
+}
+
+/* Button Styling */
+.slds-button_brand {
+	background-color: #ff6b6b !important;
+	border-color: #ff4757 !important;
+	color: white !important;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.slds-button_brand:hover {
+	background-color: #ff4757 !important;
+}
+
+/* Datatable */
+.custom-datatable {
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	background: white;
+}
