@@ -1,6 +1,44 @@
-public without sharing class FollowUpTask {
+public without sharing class OCRDashboardTeamLead {
+
+    @AuraEnabled(cacheable=true)
+    public static List<User> getUsers() {
+        return [SELECT Id, Name FROM User WHERE IsActive = true AND Id IN (SELECT OwnerId FROM Account) ORDER BY Name];
+    }
+
     @AuraEnabled(Cacheable = true)
-    public static List<Map<String, Object>> FollowUpTask() {
+    public static List<Map<String, Object>> OCRDashboardTeamLead(String userId) {
+    System.debug('userId >> ' + userId);
+
+    // Step 1: Get Claim__c Ids for the given userId, or all if userId is null or empty
+    Set<Id> userClaimIds = new Set<Id>();
+    List<Claim__c> claims;
+
+    if (String.isBlank(userId)) {
+        // Get all claims for all users (excluding termed)
+        claims = [
+            SELECT Id
+            FROM Claim__c
+            WHERE Dental_Office__c NOT IN (
+                SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
+            )
+        ];
+    } else {
+        // Get claims for a specific user
+        claims = [
+            SELECT Id
+            FROM Claim__c
+            WHERE Dental_Office__c NOT IN (
+                SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
+            )
+            AND Dental_Office__r.OwnerId = :userId
+        ];
+    }
+
+    for (Claim__c c : claims) {
+        userClaimIds.add(c.Id);
+    }
+
+        // Step 2: Fetch Follow Up tasks for those claims
         List<AggregateResult> taskResults = [
             SELECT OwnerId, Owner.Name ownerName,
                    WhatId, What.Name claimName,
@@ -9,9 +47,8 @@ public without sharing class FollowUpTask {
                    Status
             FROM Task
             WHERE Subject = 'Follow Up'
-            AND ActivityDate >= TODAY
-            AND ActivityDate <= NEXT_N_DAYS:2            
-            AND What.Type = 'Claim__c'
+            AND What.Type = 'Claim__c' 
+            AND WhatId IN :userClaimIds
             AND Status Not In ('Completed','DUPLICATE SF CLAIM - DELETE','New', 'Needs VBS Assistance', 'Needs Office Assistance')
             GROUP BY OwnerId, Owner.Name, WhatId, What.Name, LastModifiedById, Status
         ];
@@ -23,15 +60,14 @@ public without sharing class FollowUpTask {
                    LastModifiedById, 
                    Status
             FROM Task
-            WHERE Subject = 'Follow Up'          
+            WHERE Subject = 'Follow Up'
             AND What.Type = 'Claim__c'
-            AND ActivityDate > TODAY
+            AND WhatId IN :userClaimIds
             AND Status In ('New', 'Needs VBS Assistance', 'Needs Office Assistance')
             GROUP BY OwnerId, Owner.Name, WhatId, What.Name, LastModifiedById, Status
         ];
-        
-        taskResults.addAll(newclaims);
 
+        taskResults.addAll(newclaims);
 
         Set<Id> claimIds = new Set<Id>();
         for (AggregateResult ar : taskResults) {
@@ -44,25 +80,7 @@ public without sharing class FollowUpTask {
             SELECT Id, Name, Dental_Office__c, Dental_Office__r.Name, Insurance_Carrier__c, Claim_Amount__c
             FROM Claim__c
             WHERE Id IN :claimIds
-            AND Status__c NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE', 'New', 'Needs VBS Assistance', 'Needs Office Assistance')
-            AND Dental_Office__c NOT IN (
-            SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
-            )
         ]);
-        
-        // Second query: Get claims with other statuses
-        Map<Id, Claim__c> newClaimMap = new Map<Id, Claim__c>([
-            SELECT Id, Name, Dental_Office__c, Dental_Office__r.Name, Insurance_Carrier__c, Claim_Amount__c
-            FROM Claim__c
-            WHERE Id IN :claimIds
-            AND Dental_Office__c NOT IN (
-            SELECT Id FROM Account WHERE Name LIKE '%TERMED%' 
-            )
-            AND Status__c IN ('New', 'Needs VBS Assistance', 'Needs Office Assistance')
-        ]);
-        
-        // Merge the results into claimMap
-        claimMap.putAll(newClaimMap);
 
         Map<Id, Map<String, Object>> pendingTaskMap = new Map<Id, Map<String, Object>>();
 
@@ -70,15 +88,12 @@ public without sharing class FollowUpTask {
             SELECT WhatId, COUNT(Id) countOfTasks
             FROM Task
             Where Status != 'Completed'
-            AND ActivityDate >= LAST_N_DAYS:30  // Last 30 days (including today)
-            AND ActivityDate < TODAY               
+            AND WhatId IN :claimIds
             GROUP BY WhatId
         ];
 
         for (AggregateResult ar : pendingTaskResults) {
             Id claimId = (Id) ar.get('WhatId');
-            System.debug('claimId: ' + claimId);
-            System.debug('countOfTasks: ' + ar.get('countOfTasks'));
             Integer countOfTasks = (Integer) ar.get('countOfTasks');
             Decimal pendingTaskAmount = claimMap.containsKey(claimId) ? claimMap.get(claimId).Claim_Amount__c : 0;
 
@@ -88,33 +103,25 @@ public without sharing class FollowUpTask {
             };
             pendingTaskMap.put(claimId, taskData);
         }
-        System.debug('pendingTaskMap: ' + pendingTaskMap);
 
         List<Task> pendingTasksList = [
             SELECT Id, WhatId, Owner.Name, LastModifiedById, ActivityDate, LastModifiedDate, Description, Status 
             FROM Task 
             WHERE Status != 'Completed'
-            AND ActivityDate >= LAST_N_DAYS:30  // Last 30 days (including today)
-            AND ActivityDate < TODAY    
+            AND WhatId IN :userClaimIds
         ];
-        
-        // Extract the WhatId values from the tasks
+
         Set<Id> whatIds = new Set<Id>();
         for (Task t : pendingTasksList) {
             if (t.WhatId != null) {
                 whatIds.add(t.WhatId);
             }
         }
-        
-        // Query Claims using the WhatIds from tasks
+
         Map<Id, Claim__c> newClaimMap12 = new Map<Id, Claim__c>([
             SELECT Id, Name, Dental_Office__c, Dental_Office__r.Name, Insurance_Carrier__c, Claim_Amount__c
             FROM Claim__c
             WHERE Id IN :whatIds
-            AND Status__c != 'Completed'
-            AND Dental_Office__c NOT IN (
-                SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
-            )
         ]);
         claimMap.putAll(newClaimMap12);
 
@@ -151,23 +158,17 @@ public without sharing class FollowUpTask {
             FROM Task
             WHERE WhatId IN :claimIds
             AND Subject = 'Follow Up'
-            AND ActivityDate >= TODAY
-            AND ActivityDate <= NEXT_N_DAYS:2            
-            AND What.Type = 'Claim__c'
-            AND Status NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE', 'New', 'Needs VBS Assistance', 'Needs Office Assistance')
+            AND Status NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE','New', 'Needs VBS Assistance', 'Needs Office Assistance')
         ];
-        
-        // Second query: Get tasks with other statuses
+
         List<Task> newAssignedTaskList = [
             SELECT WhatId, LastModifiedDate, ActivityDate, Description
             FROM Task
             WHERE WhatId IN :claimIds
             AND Subject = 'Follow Up'
-            AND What.Type = 'Claim__c'
             AND Status IN ('New', 'Needs VBS Assistance', 'Needs Office Assistance')
         ];
-        
-        // Merge the two task lists
+
         AssignedTaskList.addAll(newAssignedTaskList);
 
         for (Task t : AssignedTaskList) {
@@ -194,8 +195,6 @@ public without sharing class FollowUpTask {
             Id dentalOfficeId = claim.Dental_Office__c;
             Map<String, Object> dentalOfficeData;
 
-            System.debug('!dentalOfficeMap.containsKey(dentalOfficeId) >>>> '+!dentalOfficeMap.containsKey(dentalOfficeId));
-
             if (!dentalOfficeMap.containsKey(dentalOfficeId)) {
                 dentalOfficeData = new Map<String, Object>();
                 dentalOfficeData.put('dentalOfficeId', dentalOfficeId);
@@ -207,11 +206,8 @@ public without sharing class FollowUpTask {
                 dentalOfficeData.put('pendingTasks', pendingTasksByOffice.containsKey(dentalOfficeId) ? pendingTasksByOffice.get(dentalOfficeId) : new List<Map<String, Object>>());
 
                 dentalOfficeMap.put(dentalOfficeId, dentalOfficeData);
-                system.debug('dentalOfficeMap: ' + dentalOfficeMap);
             } else {
                 dentalOfficeData = dentalOfficeMap.get(dentalOfficeId);
-                system.debug('dentalOfficeMap:12 ' + dentalOfficeMap);
-
             }
 
             List<Map<String, Object>> claimsList = (List<Map<String, Object>>) dentalOfficeData.get('claims');
@@ -231,8 +227,6 @@ public without sharing class FollowUpTask {
                     claimData.put('insuranceName', claim.Insurance_Carrier__c);
                     claimsList.add(claimData);
                 }
-            } else {
-                System.debug('No task details found for claimId: ' + claimId);
             }
         }
 
