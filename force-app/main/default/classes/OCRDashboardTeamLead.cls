@@ -49,6 +49,8 @@ public without sharing class OCRDashboardTeamLead {
             WHERE Subject = 'Follow Up'
             AND What.Type = 'Claim__c' 
             AND WhatId IN :userClaimIds
+            AND ActivityDate >= TODAY
+            AND ActivityDate <= NEXT_N_DAYS:2          
             AND Status Not In ('Completed','DUPLICATE SF CLAIM - DELETE','New', 'Needs VBS Assistance', 'Needs Office Assistance')
             GROUP BY OwnerId, Owner.Name, WhatId, What.Name, LastModifiedById, Status
         ];
@@ -63,6 +65,7 @@ public without sharing class OCRDashboardTeamLead {
             WHERE Subject = 'Follow Up'
             AND What.Type = 'Claim__c'
             AND WhatId IN :userClaimIds
+            AND ActivityDate > TODAY
             AND Status In ('New', 'Needs VBS Assistance', 'Needs Office Assistance')
             GROUP BY OwnerId, Owner.Name, WhatId, What.Name, LastModifiedById, Status
         ];
@@ -80,7 +83,26 @@ public without sharing class OCRDashboardTeamLead {
             SELECT Id, Name, Dental_Office__c, Dental_Office__r.Name, Insurance_Carrier__c, Claim_Amount__c
             FROM Claim__c
             WHERE Id IN :claimIds
+            AND Status__c NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE', 'New', 'Needs VBS Assistance', 'Needs Office Assistance')
+            AND Dental_Office__c NOT IN (
+            SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
+            )
         ]);
+
+              
+        // Second query: Get claims with other statuses
+        Map<Id, Claim__c> newClaimMap = new Map<Id, Claim__c>([
+            SELECT Id, Name, Dental_Office__c, Dental_Office__r.Name, Insurance_Carrier__c, Claim_Amount__c
+            FROM Claim__c
+            WHERE Id IN :claimIds
+            AND Dental_Office__c NOT IN (
+            SELECT Id FROM Account WHERE Name LIKE '%TERMED%' 
+            )
+            AND Status__c IN ('New', 'Needs VBS Assistance', 'Needs Office Assistance')
+        ]);
+        
+        // Merge the results into claimMap
+        claimMap.putAll(newClaimMap);
 
         Map<Id, Map<String, Object>> pendingTaskMap = new Map<Id, Map<String, Object>>();
 
@@ -88,6 +110,8 @@ public without sharing class OCRDashboardTeamLead {
             SELECT WhatId, COUNT(Id) countOfTasks
             FROM Task
             Where Status != 'Completed'
+            AND ActivityDate >= LAST_N_DAYS:30  // Last 30 days (including today)
+            AND ActivityDate < TODAY       
             AND WhatId IN :claimIds
             GROUP BY WhatId
         ];
@@ -109,6 +133,8 @@ public without sharing class OCRDashboardTeamLead {
             FROM Task 
             WHERE Status != 'Completed'
             AND WhatId IN :userClaimIds
+            AND ActivityDate >= LAST_N_DAYS:30  // Last 30 days (including today)
+            AND ActivityDate < TODAY  
         ];
 
         Set<Id> whatIds = new Set<Id>();
@@ -122,6 +148,10 @@ public without sharing class OCRDashboardTeamLead {
             SELECT Id, Name, Dental_Office__c, Dental_Office__r.Name, Insurance_Carrier__c, Claim_Amount__c
             FROM Claim__c
             WHERE Id IN :whatIds
+            AND Status__c != 'Completed'
+            AND Dental_Office__c NOT IN (
+                SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
+            )
         ]);
         claimMap.putAll(newClaimMap12);
 
@@ -158,6 +188,8 @@ public without sharing class OCRDashboardTeamLead {
             FROM Task
             WHERE WhatId IN :claimIds
             AND Subject = 'Follow Up'
+            AND ActivityDate >= TODAY
+            AND ActivityDate <= NEXT_N_DAYS:2  
             AND Status NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE','New', 'Needs VBS Assistance', 'Needs Office Assistance')
         ];
 
