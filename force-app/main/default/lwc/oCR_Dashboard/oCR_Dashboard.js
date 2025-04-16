@@ -18,7 +18,7 @@ const columns = [
         disabled: { fieldName: 'disableAction' },  
         value: 'view',
         iconName: 'utility:preview',
-        variant: 'success'
+        variant: 'Brand'
     },
     cellAttributes: {
         class: { fieldName: 'rowClass' }  // Add a class condition
@@ -35,7 +35,7 @@ const columns = [
         disabled: { fieldName: 'disableAction' },  
         value: 'view',
         iconName: 'utility:preview',
-        variant: 'Brand'
+        variant: 'Error'
     },
     cellAttributes: {
         class: { fieldName: 'rowClass' }  // Add a class condition
