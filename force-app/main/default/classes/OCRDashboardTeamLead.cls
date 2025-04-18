@@ -33,7 +33,7 @@ public without sharing class OCRDashboardTeamLead {
         }
     }
     
-    private static Set<Id> getRelevantClaimIds(String userId) {
+    public static Set<Id> getRelevantClaimIds(String userId) {
         Set<Id> claimIds = new Set<Id>();
         List<Claim__c> claims;
         
@@ -44,6 +44,8 @@ public without sharing class OCRDashboardTeamLead {
                 WHERE Dental_Office__c NOT IN (
                     SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
                 )
+                AND Status__c NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE')
+
             ];
         } else {
             claims = [
@@ -53,6 +55,8 @@ public without sharing class OCRDashboardTeamLead {
                     SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
                 )
                 AND Dental_Office__r.Stateside_VBs__c = :userId
+                AND Status__c NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE')
+
             ];
         }
         
@@ -63,7 +67,7 @@ public without sharing class OCRDashboardTeamLead {
         return claimIds;
     }
     
-    private static Map<Id, Claim__c> getClaimDetails(Set<Id> claimIds) {
+    public static Map<Id, Claim__c> getClaimDetails(Set<Id> claimIds) {
         return new Map<Id, Claim__c>([
             SELECT Id, Name, Dental_Office__c, Dental_Office__r.Name, Insurance_Carrier__c, 
                    Claim_Amount__c, Status__c
@@ -75,7 +79,7 @@ public without sharing class OCRDashboardTeamLead {
         ]);
     }
     
-    private static Map<Id, List<Task>> getActiveTasksByClaimId(Set<Id> claimIds) {
+    public static Map<Id, List<Task>> getActiveTasksByClaimId(Set<Id> claimIds) {
         Map<Id, List<Task>> tasksByClaimId = new Map<Id, List<Task>>();
         
         List<Task> activeTasks = [
@@ -104,7 +108,7 @@ public without sharing class OCRDashboardTeamLead {
         return tasksByClaimId;
     }
     
-    private static Map<Id, List<Task>> getPendingTasksByClaimId(Set<Id> claimIds) {
+    public static Map<Id, List<Task>> getPendingTasksByClaimId(Set<Id> claimIds) {
         Map<Id, List<Task>> pendingTasksByClaimId = new Map<Id, List<Task>>();
         
         List<Task> pendingTasks = [
@@ -128,7 +132,7 @@ public without sharing class OCRDashboardTeamLead {
         return pendingTasksByClaimId;
     }
     
-    private static List<Map<String, Object>> buildDashboardData(
+    public static List<Map<String, Object>> buildDashboardData(
         Map<Id, List<Task>> activeTasksByClaimId, 
         Map<Id, List<Task>> pendingTasksByClaimId,
         Map<Id, Claim__c> claimMap
