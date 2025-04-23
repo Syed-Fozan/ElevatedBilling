@@ -44,7 +44,6 @@ public without sharing class OCRDashboardTeamLead {
                 WHERE Dental_Office__c NOT IN (
                     SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
                 )
-                AND Status__c NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE')
 
             ];
         } else {
@@ -66,6 +65,8 @@ public without sharing class OCRDashboardTeamLead {
         
         return claimIds;
     }
+
+    
     
     public static Map<Id, Claim__c> getClaimDetails(Set<Id> claimIds) {
         return new Map<Id, Claim__c>([

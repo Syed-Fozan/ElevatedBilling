@@ -76,7 +76,7 @@ wiredgetUser({data,error}){
         { label: 'Insurance Name', fieldName: 'insuranceName', type: 'text' },
         { label: 'Status', fieldName: 'status', type: 'text' },
         { label: 'Work Date ', fieldName: 'lastModifiedDate' },
-        { label: 'Due Date', fieldName: 'DueDate' },
+        { label: 'Due Date', fieldName: 'dueDate' },
 
         // { label: 'Assigned Tasks', fieldName: 'assignedTasks', type: 'number', cellAttributes: { alignment: 'left' } },
         { label: 'Comments ', fieldName: 'description' }
