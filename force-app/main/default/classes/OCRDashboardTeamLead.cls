@@ -41,9 +41,12 @@ public without sharing class OCRDashboardTeamLead {
             claims = [
                 SELECT Id
                 FROM Claim__c
+                 
                 WHERE Dental_Office__c NOT IN (
                     SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
                 )
+                AND Status__c NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE')
+
 
             ];
         } else {

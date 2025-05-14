@@ -1,5 +1,7 @@
 import { LightningElement, track, wire } from 'lwc';
 import FollowUpTask from '@salesforce/apex/FollowUpTask.FollowUpTask';
+import getUsers from '@salesforce/apex/OCRDashboardTeamLead.getUsers';
+
 
 const columns = [
     { label: 'User Name', fieldName: 'name', type: 'text' },
@@ -45,6 +47,8 @@ const columns = [
 
 export default class FollowupTaskComponent extends LightningElement {
     @track data;
+    @track selectedUser = ' '; // Default is no user
+
     @track treeData;
     @track error;
     columns = columns;
@@ -69,8 +73,7 @@ export default class FollowupTaskComponent extends LightningElement {
         { label: 'Comments ', fieldName: 'description' }
 
     ];
-
-    @wire(FollowUpTask)
+   @wire(FollowUpTask, { userId: '$selectedUser' })
     wiredAccounts({ error, data }) {
         debugger;
         if (data) {
@@ -80,8 +83,30 @@ export default class FollowupTaskComponent extends LightningElement {
 
         } else if (error) {
             this.error = error;
+            this.treeData = [];
+            this.expandedRows = [];
         }
     }
+
+    @wire(getUsers)
+    wiredgetUser({data,error}){
+        debugger;
+        if(data){
+            this.useroption = data.map(User =>({
+                label : User.Name,
+                value : User.Id
+            }));
+        } else if (error){
+            console.error(error);
+        }
+    }
+
+
+
+    handleUserChange(event) {
+        this.selectedUser  = event.target.value;
+    }  
+
 
     transformData(data) {
     let groupedData = {};

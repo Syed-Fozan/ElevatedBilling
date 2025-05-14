@@ -1,6 +1,41 @@
 public without sharing class FollowUpTask {
     @AuraEnabled(Cacheable = true)
-    public static List<Map<String, Object>> FollowUpTask() {
+    public static List<Map<String, Object>> FollowUpTask(String userId) {
+
+        Set<Id> claimIdsss = new Set<Id>();
+        List<Claim__c> claims;
+        
+        if (String.isBlank(userId)) {
+            claims = [
+                SELECT Id
+                FROM Claim__c
+                WHERE Dental_Office__c NOT IN (
+                    SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
+                )
+				AND Status__c NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE')
+
+
+            ];
+        } else {
+            claims = [
+                SELECT Id
+                FROM Claim__c
+                WHERE Dental_Office__c NOT IN (
+                    SELECT Id FROM Account WHERE Name LIKE '%TERMED%'
+                )
+                AND Dental_Office__r.Stateside_VBs__c = :userId
+                AND Status__c NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE')
+
+            ];
+        }
+        
+        for (Claim__c c : claims) {
+            claimIdsss.add(c.Id);
+        }
+
+
+
+
         List<AggregateResult> taskResults = [
             SELECT OwnerId, Owner.Name ownerName,
                    WhatId, What.Name claimName,
@@ -12,6 +47,7 @@ public without sharing class FollowUpTask {
             AND ActivityDate >= TODAY
             AND ActivityDate <= NEXT_N_DAYS:2            
             AND What.Type = 'Claim__c'
+            AND WhatId IN :claimIdsss
             AND Status Not In ('Completed','DUPLICATE SF CLAIM - DELETE','New', 'Needs VBS Assistance', 'Needs Office Assistance')
             GROUP BY OwnerId, Owner.Name, WhatId, What.Name, LastModifiedById, Status
         ];
@@ -26,6 +62,7 @@ public without sharing class FollowUpTask {
             WHERE Subject = 'Follow Up'          
             AND What.Type = 'Claim__c'
             AND ActivityDate > TODAY
+            AND WhatId IN :claimIdsss
             AND Status In ('New', 'Needs VBS Assistance', 'Needs Office Assistance')
             GROUP BY OwnerId, Owner.Name, WhatId, What.Name, LastModifiedById, Status
         ];
@@ -71,7 +108,8 @@ public without sharing class FollowUpTask {
             FROM Task
             Where Status != 'Completed'
             AND ActivityDate >= LAST_N_DAYS:30  // Last 30 days (including today)
-            AND ActivityDate < TODAY               
+            AND ActivityDate < TODAY       
+            AND WhatId IN :claimIdsss      
             GROUP BY WhatId
         ];
 
@@ -94,7 +132,9 @@ public without sharing class FollowUpTask {
             SELECT Id, WhatId, Owner.Name, LastModifiedById, ActivityDate, LastModifiedDate, Description, Status 
             FROM Task 
             WHERE Status != 'Completed'
-            AND ActivityDate >= LAST_N_DAYS:30  // Last 30 days (including today)
+            AND ActivityDate >= LAST_N_DAYS:30 // Last 30 days (including today)
+            AND WhatId IN :claimIdsss
+            
             AND ActivityDate < TODAY    
         ];
         
@@ -152,7 +192,8 @@ public without sharing class FollowUpTask {
             WHERE WhatId IN :claimIds
             AND Subject = 'Follow Up'
             AND ActivityDate >= TODAY
-            AND ActivityDate <= NEXT_N_DAYS:2            
+            AND ActivityDate <= NEXT_N_DAYS:2
+            AND WhatId IN :claimIdsss            
             AND What.Type = 'Claim__c'
             AND Status NOT IN ('Completed', 'DUPLICATE SF CLAIM - DELETE', 'New', 'Needs VBS Assistance', 'Needs Office Assistance')
         ];
@@ -163,6 +204,8 @@ public without sharing class FollowUpTask {
             FROM Task
             WHERE WhatId IN :claimIds
             AND Subject = 'Follow Up'
+            // AND WhatId IN :claimIdsss
+
             AND What.Type = 'Claim__c'
             AND Status IN ('New', 'Needs VBS Assistance', 'Needs Office Assistance')
         ];
